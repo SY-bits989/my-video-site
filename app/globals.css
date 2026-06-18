@@ -1,26 +1,82 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.tab-btn {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  color: #1a1a1a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.tab-btn:hover {
+  color: #0066cc;
+}
+
+.tab-btn.active {
+  border-bottom: 3px solid #0066cc;
+  font-weight: 600;
+  color: #0066cc;
+}
+
+/* 內容區塊 */
+.content {
+  padding: 48px 0;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 32px 40px;
+}
+
+.link-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.link-item:last-child {
+  border-bottom: none;
+}
+
+.link-item a {
+  font-size: 19px;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  display: block;
+}
+
+.link-item a:hover {
+  color: #0066cc;
+  padding-left: 8px;
+}
+
+.link-item p {
+  margin-top: 6px;
+  font-size: 15px;
+  color: #666;
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  
+  .tab-btn {
+    padding: 10px 18px;
+    font-size: 16px;
+  }
 }
