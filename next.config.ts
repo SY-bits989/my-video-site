@@ -1,15 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  // 如果有圖片或外部資源可以加
+  output: 'export',           // ← 新增這行
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+    unoptimized: true,        // ← 新增這行（Cloudflare 需要）
   },
 };
 
