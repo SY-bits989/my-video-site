@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { useRouter } from 'next/navigation';
+import LoginForm from '../login/LoginForm';   // ← 這裡引入獨立的 LoginForm
 
 export default function OriginalContent() {
   const [user, setUser] = useState<any>(null);
@@ -12,44 +13,49 @@ export default function OriginalContent() {
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        router.push('/login');
-        return;
-      }
-      
       setUser(user);
       setLoading(false);
     };
 
     checkAuth();
-  }, [router]);
+  }, []);
 
   if (loading) {
-    return <div style={{ padding: '100px', textAlign: 'center' }}>驗證中...</div>;
+    return <div className="p-24 text-center text-lg">驗證中...</div>;
   }
 
+  // 未登入 → 顯示美化後的登入表單
+  if (!user) {
+    return (
+      <div className="max-w-[1100px] mx-auto px-6 py-12">
+        <LoginForm redirectToOriginal={true} />
+      </div>
+    );
+  }
+
+  // 已登入 → 顯示原創內容
   return (
-    <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>🌟 善緣精選 - 原創內容</h1>
+    <div className="max-w-[1100px] mx-auto px-6 py-12">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold flex items-center gap-3">
+          🌟 善緣精選 - 原創內容
+        </h1>
         <button 
           onClick={async () => {
             await supabase.auth.signOut();
-            router.push('/login');
+            router.refresh();
           }}
-          style={{ padding: '8px 16px' }}
+          className="px-6 py-2.5 bg-red-600 text-white rounded-2xl hover:bg-red-700 transition"
         >
           登出
         </button>
       </div>
       
-      <p>歡迎，{user?.email}</p>
+      <p className="mb-8 text-lg">歡迎回來，{user?.email}</p>
       
-      <div style={{ marginTop: '40px' }}>
-        <h2>原創內容區</h2>
-        <p>這裡放置你的原創文章、影片、心得等內容。</p>
-        {/* 之後放你的原創內容 */}
+      <div className="bg-white border border-gray-100 rounded-3xl p-10">
+        <h2 className="text-2xl font-semibold mb-4">原創內容區</h2>
+        <p className="text-gray-600">這裡放置你的原創文章、影片、心得等內容。</p>
       </div>
     </div>
   );
