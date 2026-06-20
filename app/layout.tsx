@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: '善緣精選',
   description: '善緣精選 - 天頂視頻、妙音、千古文化、原創、美食',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
   },
 };
 

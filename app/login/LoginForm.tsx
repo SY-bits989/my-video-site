@@ -4,7 +4,13 @@ import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { useRouter } from 'next/navigation';
 
-export default function LoginForm({ redirectToOriginal = false }: { redirectToOriginal?: boolean }) {
+export default function LoginForm({ 
+  redirectToOriginal = false,
+  onLoginSuccess 
+}: { 
+  redirectToOriginal?: boolean;
+  onLoginSuccess?: () => void;
+}) {
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -22,7 +28,14 @@ export default function LoginForm({ redirectToOriginal = false }: { redirectToOr
       if (isLogin) {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        router.push(redirectToOriginal ? '/original' : '/');
+
+        if (redirectToOriginal && onLoginSuccess) {
+          onLoginSuccess();
+        } else if (redirectToOriginal) {
+          router.push('/original');
+        } else {
+          router.push('/');
+        }
       } else {
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
