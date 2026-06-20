@@ -13,23 +13,7 @@ export const metadata: Metadata = {
   title: '善緣',
   description: '善緣精選 - 穹頂樂、天頂視頻、妙音、千古文化、善緣原創、美食',
   icons: {
-    icon: [
-      '/favicon.ico', // 主要
-      '/favicon-16x16.png',
-      '/favicon-32x32.png',
-    ],
-    apple: '/apple-touch-icon.png',
-    shortcut: '/favicon.ico', // 新增這行比較好
-    other: [
-      {
-        rel: 'android-chrome-192x192',
-        url: '/android-chrome-192x192.png',
-      },
-      {
-        rel: 'android-chrome-512x512',
-        url: '/android-chrome-512x512.png',
-      },
-    ],
+    icon: '/favicon.ico',
   },
 };
 
