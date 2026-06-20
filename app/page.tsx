@@ -13,17 +13,17 @@ export default function Home() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // 檢查登入狀態
   useEffect(() => {
     const checkAuth = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       setUser(user);
       setLoading(false);
     };
     checkAuth();
   }, []);
 
-  // 如果切換到 original 但沒登入，就跳轉到 login
   useEffect(() => {
     if (activeTab === 'original' && !user && !loading) {
       router.push('/login?redirect=original');
@@ -36,11 +36,10 @@ export default function Home() {
 
   return (
     <div className="max-w-[1100px] mx-auto px-6 py-12">
-      {/* 登入狀態顯示 */}
       {user && (
         <div className="mb-6 text-right">
           <span>已登入：{user.email}</span>
-          <button 
+          <button
             onClick={async () => {
               await supabase.auth.signOut();
               window.location.href = '/';
@@ -56,7 +55,7 @@ export default function Home() {
         {activeTab === 'original' && !user ? (
           <div className="text-center py-20">
             <h2 className="text-2xl">此內容需要登入後才能查看</h2>
-            <button 
+            <button
               onClick={() => router.push('/login')}
               className="mt-6 px-8 py-3 bg-blue-600 text-white rounded-lg"
             >
@@ -66,23 +65,38 @@ export default function Home() {
         ) : items.length === 0 ? (
           <div className="text-center py-20">
             <h2 className="text-3xl text-gray-500">此分類暫無內容，敬請期待</h2>
-            {activeTab === 'original' && (
-              <p className="mt-6 text-blue-600 text-xl">原創內容即將推出付費訂閱觀看模式</p>
-            )}
           </div>
         ) : (
           <div className="links-grid grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12">
             {items.map((item, index) => (
-              <div key={index} className="link-item border-b border-gray-200 pb-8 last:border-none">
-                <a 
-                  href={item.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[19px] leading-tight hover:text-blue-600 hover:pl-3 transition-all block"
-                >
-                  {item.title}
-                </a>
-                {item.desc && <p className="mt-3 text-gray-600 text-[15px]">{item.desc}</p>}
+              <div
+                key={index}
+                className="link-item border-b border-gray-200 pb-8 last:border-none"
+              >
+                {item.type === 'embed' && item.embedCode ? (
+                  <>
+                    <h3 className="text-[19px] font-medium mb-4">
+                      {item.title}
+                    </h3>
+                    <div
+                      className="my-4"
+                      dangerouslySetInnerHTML={{ __html: item.embedCode }}
+                    />
+                  </>
+                ) : (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[19px] leading-tight hover:text-blue-600 hover:pl-3 transition-all block"
+                  >
+                    {item.title}
+                  </a>
+                )}
+
+                {item.desc && (
+                  <p className="mt-3 text-gray-600 text-[15px]">{item.desc}</p>
+                )}
               </div>
             ))}
           </div>

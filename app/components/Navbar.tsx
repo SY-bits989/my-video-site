@@ -3,6 +3,7 @@
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 const tabs = [
+  { id: 'zenith', label: '穹頂樂' },
   { id: 'top-video', label: '天頂視頻' },
   { id: 'audio', label: '妙音' },
   { id: 'culture', label: '千古文化' },
