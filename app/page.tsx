@@ -73,7 +73,7 @@ export default function Home() {
                 key={index}
                 className="link-item border-b border-gray-200 pb-8 last:border-none"
               >
-                {item.type === 'embed' && item.embedCode ? (
+                {'type' in item && item.type === 'embed' && item.embedCode ? (
                   <>
                     <h3 className="text-[19px] font-medium mb-4">
                       {item.title}
@@ -85,7 +85,7 @@ export default function Home() {
                   </>
                 ) : (
                   <a
-                    href={item.url}
+                    href={'url' in item ? item.url : '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[19px] leading-tight hover:text-blue-600 hover:pl-3 transition-all block"
@@ -94,7 +94,7 @@ export default function Home() {
                   </a>
                 )}
 
-                {item.desc && (
+                {'desc' in item && item.desc && (
                   <p className="mt-3 text-gray-600 text-[15px]">{item.desc}</p>
                 )}
               </div>
