@@ -40,14 +40,14 @@ export default function OriginalContent() {
   const displayName = user?.email?.split('@')[0] || '用戶';
 
   return (
-    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '48px 24px' }}>
+    <div style={{ maxWidth: '1500px', margin: '0 auto', padding: '48px 24px' }}>
       {/* 頂部資訊列 */}
       <div
         style={{
           display: 'flex',
           justifyContent: 'flex-end',
           alignItems: 'center',
-          marginBottom: '80px',
+          marginBottom: '50px',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
@@ -75,8 +75,8 @@ export default function OriginalContent() {
               transition: 'all 0.2s ease',
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#fee2e2';
-              e.currentTarget.style.color = '#ef4444';
+              e.currentTarget.style.backgroundColor = '#dbdef5';
+              e.currentTarget.style.color = '#0026ff';
             }}
             onMouseOut={(e) => {
               e.currentTarget.style.backgroundColor = '#f3f4f6';

@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { useRouter } from 'next/navigation';
 
-export default function LoginForm({ 
+export default function LoginForm({
   redirectToOriginal = false,
-  onLoginSuccess 
-}: { 
+  onLoginSuccess,
+}: {
   redirectToOriginal?: boolean;
   onLoginSuccess?: () => void;
 }) {
@@ -26,7 +26,10 @@ export default function LoginForm({
 
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
         if (error) throw error;
 
         if (redirectToOriginal && onLoginSuccess) {
@@ -52,24 +55,33 @@ export default function LoginForm({
     <div style={{ maxWidth: '420px', margin: '0 auto', padding: '80px 20px' }}>
       {/* 標題 */}
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-        <div style={{ 
-          width: '80px', 
-          height: '80px', 
-          background: 'linear-gradient(135deg, #1e40af, #4f46e5)', 
-          borderRadius: '20px',
-          margin: '0 auto 20px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 10px 15px -3px rgba(30, 64, 175, 0.3)'
-        }}>
+        <div
+          style={{
+            width: '80px',
+            height: '80px',
+            background: 'linear-gradient(135deg, #1e40af, #4f46e5)',
+            borderRadius: '20px',
+            margin: '0 auto 20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 10px 15px -3px rgba(30, 64, 175, 0.3)',
+          }}
+        >
           <span style={{ fontSize: '36px' }}>🎞️</span>
         </div>
-        <h2 style={{ fontSize: '28px', fontWeight: '600', color: '#111' }}>登入善緣原創</h2>
-        <p style={{ color: '#666', marginTop: '8px', fontSize: '17px' }}>原創內容需登入後查看</p>
+        <h2 style={{ fontSize: '28px', fontWeight: '600', color: '#111' }}>
+          登入善緣原創
+        </h2>
+        <p style={{ color: '#666', marginTop: '8px', fontSize: '17px' }}>
+          原創內容需登入後查看
+        </p>
       </div>
 
-      <form onSubmit={handleAuth} style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+      <form
+        onSubmit={handleAuth}
+        style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}
+      >
         {/* 電子郵件 */}
         <div>
           <input
@@ -128,21 +140,37 @@ export default function LoginForm({
             opacity: loading ? 0.7 : 1,
           }}
         >
-          {loading ? '登入中...' : (isLogin ? '登入' : '註冊')}
+          {loading ? '登入中...' : isLogin ? '登入' : '註冊'}
         </button>
       </form>
 
       <div style={{ textAlign: 'center', marginTop: '40px' }}>
         <button
           onClick={() => setIsLogin(!isLogin)}
-          style={{ color: '#1e40af', fontSize: '16px', fontWeight: '500', background: 'none', border: 'none', cursor: 'pointer' }}
+          style={{
+            color: '#1e40af',
+            fontSize: '16px',
+            fontWeight: '500',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+          }}
         >
           {isLogin ? '還沒有帳號？立即註冊' : '已有帳號？返回登入'}
         </button>
       </div>
 
       {message && (
-        <div style={{ marginTop: '30px', padding: '16px', backgroundColor: '#fee2e2', color: '#b91c1c', borderRadius: '12px', textAlign: 'center' }}>
+        <div
+          style={{
+            marginTop: '30px',
+            padding: '16px',
+            backgroundColor: '#fee2e2',
+            color: '#b91c1c',
+            borderRadius: '12px',
+            textAlign: 'center',
+          }}
+        >
           {message}
         </div>
       )}

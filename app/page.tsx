@@ -8,7 +8,7 @@ import { videoData } from './lib/data';
 export default function Home() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const activeTab = searchParams.get('tab') || 'top-video';
+  const activeTab = searchParams.get('tab') || 'zenith';
 
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -24,6 +24,7 @@ export default function Home() {
     checkAuth();
   }, []);
 
+  // 只在 original tab 且未登入時才跳轉登入頁
   useEffect(() => {
     if (activeTab === 'original' && !user && !loading) {
       router.push('/login?redirect=original');
@@ -36,20 +37,7 @@ export default function Home() {
 
   return (
     <div className="max-w-[1100px] mx-auto px-6 py-12">
-      {user && (
-        <div className="mb-6 text-right">
-          <span>已登入：{user.email}</span>
-          <button
-            onClick={async () => {
-              await supabase.auth.signOut();
-              window.location.href = '/';
-            }}
-            className="ml-4 text-sm text-red-600 hover:underline"
-          >
-            登出
-          </button>
-        </div>
-      )}
+      {/* 已移除登入狀態顯示 */}
 
       <div className="content">
         {activeTab === 'original' && !user ? (

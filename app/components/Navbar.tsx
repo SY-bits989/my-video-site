@@ -7,7 +7,7 @@ const tabs = [
   { id: 'top-video', label: '天頂視頻' },
   { id: 'audio', label: '妙音' },
   { id: 'culture', label: '千古文化' },
-  { id: 'original', label: '原創' },
+  { id: 'original', label: '善緣原創' },
   { id: 'others', label: '美味' },
 ];
 
@@ -16,7 +16,7 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const activeTab = searchParams.get('tab') || 'top-video';
+  const activeTab = searchParams.get('tab') || 'zenith';
 
   const handleTabChange = (tabId: string) => {
     // 原創 Tab 直接跳到 /original
@@ -36,7 +36,7 @@ export default function Navbar() {
         <h1 className="text-[28px] font-semibold text-center py-6 text-gray-900">
           善緣精選
         </h1>
-        
+
         {/* 永遠顯示 Tab，不再隱藏 */}
         <nav className="flex justify-center flex-wrap gap-2 pb-6">
           {tabs.map((tab) => (
@@ -44,9 +44,9 @@ export default function Navbar() {
               key={tab.id}
               onClick={() => handleTabChange(tab.id)}
               className={`tab-btn px-6 py-3 text-[17px] font-medium transition-all rounded-full ${
-                (pathname === '/original' && tab.id === 'original') || 
+                (pathname === '/original' && tab.id === 'original') ||
                 (activeTab === tab.id && pathname !== '/original')
-                  ? 'active bg-blue-600 text-white shadow-md' 
+                  ? 'active bg-blue-600 text-white shadow-md'
                   : 'hover:text-blue-600 hover:bg-gray-100'
               }`}
             >
