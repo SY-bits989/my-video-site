@@ -84,6 +84,9 @@ export default function JingxuanPage() {
             currentData.map((item, index) => {
               const isZenith = currentCategory?.id === 'qiongding';
 
+              // 類型守衛：判斷是否有 url
+              const hasUrl = 'url' in item && item.url;
+
               return (
                 <div
                   key={index}
@@ -99,7 +102,7 @@ export default function JingxuanPage() {
                   }}
                 >
                   {/* 可點擊的標題 */}
-                  {item.url && !item.embedCode ? (
+                  {'url' in item && item.url && !('embedCode' in item) ? (
                     <a
                       href={item.url}
                       target="_blank"
@@ -112,15 +115,15 @@ export default function JingxuanPage() {
                         display: 'block',
                         marginBottom: isZenith ? '8px' : '4px',
                         lineHeight: '1.4',
-                        transition: 'color 0.2s ease', // 新增：顏色過渡更順暢
+                        transition: 'color 0.2s ease',
                       }}
                       onMouseOver={(e) => {
                         e.currentTarget.style.textDecoration = 'underline';
-                        e.currentTarget.style.color = '#facc15'; // 懸停時變黃色
+                        e.currentTarget.style.color = '#facc15';
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.textDecoration = 'none';
-                        e.currentTarget.style.color = '#0320ff'; // 離開後恢復藍色
+                        e.currentTarget.style.color = '#0320ff';
                       }}
                     >
                       {item.title}
@@ -138,7 +141,8 @@ export default function JingxuanPage() {
                     </h3>
                   )}
 
-                  {item.desc && (
+                  {/* 描述文字 - 使用類型守衛 */}
+                  {'desc' in item && item.desc && (
                     <p
                       style={{
                         color: '#666',
@@ -150,8 +154,8 @@ export default function JingxuanPage() {
                     </p>
                   )}
 
-                  {/* embed 內容（穹頂樂專用） */}
-                  {item.embedCode && (
+                  {/* embed 內容 */}
+                  {'embedCode' in item && item.embedCode && (
                     <div
                       dangerouslySetInnerHTML={{ __html: item.embedCode }}
                       style={{ marginTop: '16px' }}
