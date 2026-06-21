@@ -82,3 +82,29 @@ export const videoData = {
     },
   ],
 } as const;
+// ==================== 善緣原創視頻 ====================
+
+export type OriginalVideo = {
+  id: number;
+  title: string;
+  videoSrc: string;
+  thumbnail: string;
+  desc?: string;
+};
+
+export const originalVideos: OriginalVideo[] = [
+  {
+    id: 1,
+    title: '三退',
+    videoSrc: '/videos/st.mp4', // ← 改成 videos
+    thumbnail: '/videos/st.jpg', // ← 改成 videos
+    desc: '',
+  },
+  {
+    id: 2,
+    title: '許仙夢醒',
+    videoSrc: '/videos/xxmx.mp4', // ← 改成 videos
+    thumbnail: '/videos/xxmx.jpg', // ← 改成 videos
+    desc: '',
+  },
+];

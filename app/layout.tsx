@@ -34,9 +34,7 @@ export default function RootLayout({
         </Suspense>
 
         <footer className="bg-gray-50 border-t py-12 text-center text-sm text-gray-500">
-          <div className="max-w-[1100px] mx-auto px-6">
-            &copy; 2026 善緣 • 部分資源來自網路，如有侵權請告知
-          </div>
+          <div className="max-w-[1100px] mx-auto px-6"></div>
         </footer>
       </body>
     </html>

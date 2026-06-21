@@ -1,114 +1,121 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase';
-import { useRouter } from 'next/navigation';
-import LoginForm from '../login/LoginForm';
+import { useState } from 'react';
+import { originalVideos } from '../lib/data';
 
-export default function OriginalContent() {
-  const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUser(user);
-      setLoading(false);
-    };
-
-    checkAuth();
-  }, []);
-
-  if (loading) {
-    return <div className="p-24 text-center text-lg">驗證中...</div>;
-  }
-
-  if (!user) {
-    return (
-      <div className="max-w-[1100px] mx-auto px-6 py-12">
-        <LoginForm
-          redirectToOriginal={true}
-          onLoginSuccess={() => window.location.reload()}
-        />
-      </div>
-    );
-  }
-
-  const displayName = user?.email?.split('@')[0] || '用戶';
+export default function OriginalPage() {
+  const [currentVideo, setCurrentVideo] = useState(originalVideos[0]);
 
   return (
-    <div style={{ maxWidth: '1500px', margin: '0 auto', padding: '48px 24px' }}>
-      {/* 頂部資訊列 */}
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
+      {/* 上方大播放器 */}
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-          marginBottom: '50px',
+          maxWidth: '620px',
+          margin: '0 auto 60px',
+          borderRadius: '20px',
+          overflow: 'hidden',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
-          <span style={{ fontSize: '18px', color: '#374151' }}>
-            你好，
-            <span style={{ fontWeight: '600', color: '#2563eb' }}>
-              {displayName}
-            </span>
-          </span>
-
-          <button
-            onClick={async () => {
-              await supabase.auth.signOut();
-              router.refresh();
-            }}
-            style={{
-              padding: '10px 26px',
-              fontSize: '14px',
-              fontWeight: '500',
-              color: '#374151',
-              backgroundColor: '#f3f4f6',
-              border: 'none',
-              borderRadius: '9999px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = '#dbdef5';
-              e.currentTarget.style.color = '#0026ff';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = '#f3f4f6';
-              e.currentTarget.style.color = '#374151';
-            }}
-          >
-            登出
-          </button>
-        </div>
-      </div>
-
-      {/* 視頻區域 */}
-      <div style={{ maxWidth: '700px', margin: '0 auto' }}>
         <video
-          width="100%"
-          height="auto"
+          key={currentVideo.id}
           controls
           autoPlay
-          loop
-          muted
-          playsInline
+          style={{ width: '100%', height: 'auto', display: 'block' }}
+        >
+          <source src={currentVideo.videoSrc} type="video/mp4" />
+          您的瀏覽器不支援播放此視頻。
+        </video>
+      </div>
+
+      {/* 下方縮圖列表 */}
+      <div>
+        <h2
           style={{
-            borderRadius: '24px',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-            background: '#000',
-            width: '100%',
-            display: 'block',
+            textAlign: 'center',
+            marginBottom: '30px',
+            color: '#374151',
           }}
         >
-          <source src="/videos/compressed.mp4" type="video/mp4" />
-          您的瀏覽器不支援影片播放。
-        </video>
+          全部原創作品
+        </h2>
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center', // 想置中就保留
+            gap: '20px', // 改成 0（想要無縫貼合）
+            padding: '0 10px',
+            flexWrap: 'nowrap', // ← 關鍵：禁止換行
+            width: '100%', // 或改成 'fit-content' / 'auto'
+            maxWidth: '900px', // 可自行調整最大寬度
+          }}
+        >
+          {originalVideos.map((video) => (
+            <div
+              key={video.id}
+              onClick={() => setCurrentVideo(video)}
+              style={{
+                cursor: 'pointer',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow:
+                  currentVideo.id === video.id
+                    ? '0 0 0 3px #0022ff'
+                    : '0 4px 12px rgba(63, 68, 32, 0.1)',
+                transition: 'all 0.3s ease',
+                width: '280px',
+                maxWidth: '280px',
+                flex: '0 0 280px',
+              }}
+            >
+              {/* 正方形縮圖 */}
+              <div
+                style={{
+                  position: 'relative',
+                  width: '100%',
+                  paddingTop: '100%',
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                  }}
+                />
+              </div>
+
+              {/* 標題 */}
+              <div
+                style={{
+                  padding: '10px',
+                  backgroundColor: 'white',
+                  textAlign: 'center',
+                }}
+              >
+                <p
+                  style={{
+                    margin: 0,
+                    fontWeight: '600',
+                    color: currentVideo.id === video.id ? '#001eff' : '#001eff',
+                    fontSize: '18px',
+                  }}
+                >
+                  {video.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
