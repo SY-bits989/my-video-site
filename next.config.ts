@@ -1,8 +1,10 @@
-// next.config.ts
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  allowedDevOrigins: ['127.52.107.166'],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // 開啟靜態匯出
+  trailingSlash: true,
+  images: {
+    unoptimized: true, // Cloudflare 需要
+  },
 };
 
 export default nextConfig;
