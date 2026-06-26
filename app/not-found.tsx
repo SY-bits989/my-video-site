@@ -1,34 +1,36 @@
 // app/not-found.tsx
-import Link from 'next/link';
-
 export default function NotFound() {
   return (
-    <div style={{ 
-      padding: '120px 20px', 
-      textAlign: 'center', 
-      maxWidth: '600px', 
-      margin: '0 auto',
-      fontFamily: 'system-ui, sans-serif'
-    }}>
-      <h1 style={{ fontSize: '80px', margin: '0 0 16px 0', color: '#18228c' }}>404</h1>
-      <h2>頁面不存在</h2>
-      <p style={{ fontSize: '18px', color: '#555', margin: '24px 0 40px' }}>
-        抱歉，您訪問的頁面不存在。
-      </p>
-      <Link 
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        backgroundColor: '#09090b',
+        color: '#f4f4f5',
+        textAlign: 'center',
+        padding: '2rem',
+      }}
+    >
+      <h1 style={{ fontSize: '7rem', margin: '0 0 1rem 0', fontWeight: 700 }}>
+        404
+      </h1>
+      <p style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>頁面不存在</p>
+      <a
         href="/"
         style={{
-          display: 'inline-block',
-          padding: '16px 40px',
-          backgroundColor: '#18228c',
-          color: 'white',
-          borderRadius: '8px',
+          color: '#60a5fa',
+          fontSize: '1.2rem',
           textDecoration: 'none',
-          fontWeight: 600
+          padding: '12px 24px',
+          border: '1px solid #60a5fa',
+          borderRadius: '12px',
         }}
       >
-        返回首頁
-      </Link>
+        ← 返回首頁
+      </a>
     </div>
   );
 }

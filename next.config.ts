@@ -1,10 +1,8 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export',           // ← 新增這行
-  images: {
-    unoptimized: true,        // ← 新增這行（Cloudflare 需要）
-  },
+  allowedDevOrigins: ['127.52.107.166'],
 };
 
 export default nextConfig;

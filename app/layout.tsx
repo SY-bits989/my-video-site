@@ -1,20 +1,12 @@
+// app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from './components/Navbar';
+import Sidebar from './components/layout/Sidebar';
 import { Suspense } from 'react';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: '善緣',
-  description: '善緣精選 - 穹頂樂、天頂視頻、妙音、千古文化、善緣原創、美食',
-  icons: {
-    icon: '/favicon.ico',
-  },
+  description: '善緣',
 };
 
 export default function RootLayout({
@@ -24,18 +16,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
-      <body className={inter.className}>
-        <Suspense fallback={<div className="p-8 text-center">載入導航...</div>}>
-          <Navbar />
-        </Suspense>
-
-        <Suspense fallback={<div className="p-12 text-center">載入中...</div>}>
-          <main className="min-h-screen">{children}</main>
-        </Suspense>
-
-        <footer className="bg-gray-50 border-t py-12 text-center text-sm text-gray-500">
-          <div className="max-w-[1100px] mx-auto px-6"></div>
-        </footer>
+      <body className="bg-zinc-950 text-white">
+        <div className="flex min-h-screen">
+          <Sidebar />
+          <main className="flex-1 lg:ml-[320px] bg-zinc-950">
+            <Suspense
+              fallback={<div className="p-8 text-white">載入中...</div>}
+            >
+              <div className="p-6 lg:p-8 max-w-[1100px]">{children}</div>
+            </Suspense>
+          </main>
+        </div>
       </body>
     </html>
   );
