@@ -1,4 +1,6 @@
 // app/not-found.tsx
+import Link from 'next/link';
+
 export default function NotFound() {
   return (
     <div
@@ -18,19 +20,19 @@ export default function NotFound() {
         404
       </h1>
       <p style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>頁面不存在</p>
-      <a
+      <Link
         href="/"
         style={{
           color: '#60a5fa',
           fontSize: '1.2rem',
           textDecoration: 'none',
-          padding: '12px 24px',
+          padding: '14px 28px',
           border: '1px solid #60a5fa',
           borderRadius: '12px',
         }}
       >
         ← 返回首頁
-      </a>
+      </Link>
     </div>
   );
 }

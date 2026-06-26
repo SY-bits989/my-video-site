@@ -18,7 +18,7 @@ const subCategories = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const isJingxuan = pathname === '/jingxuan';
+  const isJingxuan = pathname === '/jingxuan' || pathname === '/jingxuan/';
 
   return (
     <div className={styles.sidebar}>
@@ -48,10 +48,9 @@ export default function Sidebar() {
         </Link>
       </div>
 
-      {/* 下半部內容 */}
       <div className={styles.videoSection}>
         {!isJingxuan ? (
-          // 原創短視頻
+          // 原創
           <>
             <h3 className={styles.sectionTitle}>原創短視頻</h3>
             <div className={styles.videoList}>
@@ -72,7 +71,7 @@ export default function Sidebar() {
             </div>
           </>
         ) : (
-          // 精選分類
+          // 精選 - 簡化版（暫時不顯示 active 狀態）
           <>
             <h3 className={styles.sectionTitle}>精選分類</h3>
             <div className={styles.subTabs}>
