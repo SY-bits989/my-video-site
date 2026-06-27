@@ -21,7 +21,17 @@ export default function RootLayout({
           <Sidebar />
           <main className="flex-1 lg:ml-[320px] bg-zinc-950">
             <Suspense
-              fallback={<div className="p-8 text-white">載入中...</div>}
+              fallback={
+                <div
+                  style={{
+                    padding: '3rem',
+                    textAlign: 'center',
+                    color: '#888',
+                  }}
+                >
+                  載入中...
+                </div>
+              }
             >
               <div className="p-6 lg:p-8 max-w-[1100px]">{children}</div>
             </Suspense>
