@@ -1,9 +1,9 @@
-// app/jingxuan/page.tsx
 'use client';
 
 import { useSearchParams } from 'next/navigation';
 import { videoData, VideoItem } from '../lib/data';
 import styles from './page.module.css';
+import { Suspense } from 'react';
 
 const subCategories = [
   { id: 'qiongding', name: '穹頂樂', key: 'zenith' as const },
@@ -14,7 +14,7 @@ const subCategories = [
   { id: 'meishi', name: '美味', key: 'others' as const },
 ] as const;
 
-export default function JingxuanPage() {
+function JingxuanContent() {
   const searchParams = useSearchParams();
   const activeTab = searchParams.get('tab') || 'qiongding';
 
@@ -24,8 +24,8 @@ export default function JingxuanPage() {
     : [];
 
   return (
-    <div className={styles.mainContent}>
-      {/* 手機版橫向 Tab */}
+    <>
+      {/* 手機版橫向 Tab（移到這裡） */}
       <div className={styles.mobileTabs}>
         {subCategories.map((cat) => (
           <a
@@ -38,6 +38,7 @@ export default function JingxuanPage() {
         ))}
       </div>
 
+      {/* 內容區域 */}
       <div className={styles.contentArea}>
         {currentData.length > 0 ? (
           currentData.map((item, index) => (
@@ -69,6 +70,30 @@ export default function JingxuanPage() {
           <p className={styles.empty}>此分類暫無內容</p>
         )}
       </div>
+    </>
+  );
+}
+
+export default function JingxuanPage() {
+  return (
+    <div className={styles.mainContent}>
+      <Suspense
+        fallback={
+          <div className={styles.contentArea}>
+            <p
+              style={{
+                textAlign: 'center',
+                padding: '3rem 1rem',
+                color: '#71717a',
+              }}
+            >
+              載入中...
+            </p>
+          </div>
+        }
+      >
+        <JingxuanContent />
+      </Suspense>
     </div>
   );
 }
