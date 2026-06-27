@@ -30,6 +30,21 @@ export const videoData = {
       url: 'https://www.shenyuncreations.com/s/t/Dv8Vh',
       desc: '',
     },
+    {
+      title: '堅不可摧：神韻幕後的故事',
+      url: 'https://www.ganjingworld.com/s/K8RaWJOEl4',
+      desc: '',
+    },
+    {
+      title: '《堅不可摧》加拿大首映座談會 神韻藝術家們暢敘',
+      url: 'https://www.ganjingworld.com/s/E3WN3bBvVb',
+      desc: '',
+    },
+    {
+      title: '現場：神韻《堅不可摧：神韻幕後的故事》加拿大首映式Q&A',
+      url: 'https://www.ganjingworld.com/s/7vVxzxYeXV',
+      desc: '',
+    },
   ],
 
   audio: [
@@ -69,6 +84,16 @@ export const videoData = {
     {
       title: '看中國：洪水肆虐貴州廣西 山體滑坡奪命 街道變河房屋泡水',
       url: 'http://kzg.io/b54cQU',
+      desc: '',
+    },
+    {
+      title: '看中國：神韻20週年壓軸戲即將上演 加政要賀重返多倫多',
+      url: 'http://kzg.io/b54cQc',
+      desc: '',
+    },
+    {
+      title: '看中國：神韻重返多倫多首演爆滿 觀眾：以行動反擊跨國鎮壓',
+      url: 'http://kzg.io/b54cSz',
       desc: '',
     },
   ],

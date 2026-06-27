@@ -25,7 +25,7 @@ function JingxuanContent() {
 
   return (
     <>
-      {/* 手機版橫向 Tab（移到這裡） */}
+      {/* 手機版橫向 Tab */}
       <div className={styles.mobileTabs}>
         {subCategories.map((cat) => (
           <a
