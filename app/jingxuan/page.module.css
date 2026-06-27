@@ -1,16 +1,14 @@
 /* app/jingxuan/page.module.css */
 
 .mainContent {
-  padding: 2rem 3rem;
+  padding: 1rem 1rem 2rem;
   max-width: 1100px;
-  margin-left: 340px; /* 避開左側邊欄 */
+  margin-left: 340px;
 }
 
-.mainTitle {
-  font-size: 2.6rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
-  color: #f4f4f5;
+/* 電腦版隱藏上方 Tab（因為 Sidebar 已有） */
+.mobileTabs {
+  display: none;
 }
 
 .contentArea {
@@ -22,7 +20,7 @@
 .itemCard {
   background-color: #18181b;
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1.8rem;
   border: 1px solid #27272a;
 }
 
@@ -54,9 +52,53 @@
   background: #000;
 }
 
+/* ==================== 手機版 ==================== */
+@media (max-width: 1024px) {
+  .mainContent {
+    margin-left: 0;
+    padding: 1rem 0.8rem 2rem;
+  }
+
+  /* 手機版顯示橫向可滑動 Tab */
+  .mobileTabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.8rem;
+    padding: 1rem 0.8rem;
+    scrollbar-width: none;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobileTabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobileTab {
+    padding: 0.75rem 1.2rem;
+    background-color: #27272a;
+    color: #a1a1aa;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .mobileTabActive {
+    background-color: #3b82f6;
+    color: white;
+  }
+
+  .itemCard {
+    padding: 1.5rem;
+  }
+}
+
 .empty {
   text-align: center;
   color: #71717a;
-  font-size: 1.3rem;
-  padding: 4rem 2rem;
+  font-size: 1.2rem;
+  padding: 4rem 1rem;
 }

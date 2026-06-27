@@ -159,22 +159,24 @@
     text-align: center;
   }
 
-  .videoSection {
-    padding: 1.2rem 1rem;
-  }
-
+  /* 隱藏原創縮圖 */
   .videoList {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    display: none;
   }
 
-  .videoCard {
-    aspect-ratio: 1 / 1;
+  /* 強制隱藏側邊欄的精選 Tab */
+  .subTabs,
+  .subTab {
+    display: none !important;
+  }
+  /* 新增：隱藏手機版側邊欄的標題和分界線 */
+  .sectionTitle,
+  .videoSection {
+    display: none;
   }
 }
 
-/* ==================== 精選第二層 Tab ==================== */
+/* ==================== 精選第二層 Tab (內容區域使用) ==================== */
 .subTabs {
   display: flex;
   flex-direction: column;

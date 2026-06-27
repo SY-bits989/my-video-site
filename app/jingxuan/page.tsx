@@ -19,15 +19,24 @@ export default function JingxuanPage() {
   const activeTab = searchParams.get('tab') || 'qiongding';
 
   const currentCategory = subCategories.find((cat) => cat.id === activeTab);
-
-  // 解決 readonly 轉換問題
   const currentData: VideoItem[] = currentCategory
     ? [...(videoData[currentCategory.key] || [])]
     : [];
 
   return (
     <div className={styles.mainContent}>
-      <h1 className={styles.mainTitle}>{currentCategory?.name || '精選'}</h1>
+      {/* 手機版橫向 Tab */}
+      <div className={styles.mobileTabs}>
+        {subCategories.map((cat) => (
+          <a
+            key={cat.id}
+            href={`/jingxuan?tab=${cat.id}`}
+            className={`${styles.mobileTab} ${activeTab === cat.id ? styles.mobileTabActive : ''}`}
+          >
+            {cat.name}
+          </a>
+        ))}
+      </div>
 
       <div className={styles.contentArea}>
         {currentData.length > 0 ? (
