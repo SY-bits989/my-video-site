@@ -20,7 +20,7 @@ export default function JingxuanPage() {
 
   const currentCategory = subCategories.find((cat) => cat.id === activeTab);
   const currentData: VideoItem[] = currentCategory
-    ? [...(videoData[currentCategory.key] || [])]
+    ? (videoData[currentCategory.key] as any) || []
     : [];
 
   return (

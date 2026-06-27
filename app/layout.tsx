@@ -24,7 +24,7 @@ export default function RootLayout({
               fallback={
                 <div
                   style={{
-                    padding: '3rem',
+                    padding: '4rem 2rem',
                     textAlign: 'center',
                     color: '#888',
                   }}
