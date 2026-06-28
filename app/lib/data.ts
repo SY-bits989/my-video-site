@@ -96,6 +96,11 @@ export const videoData = {
       url: 'http://kzg.io/b54cSz',
       desc: '',
     },
+    {
+      title: '看中國：香港泰拳王終圓觀神韵心願 感歎邪不勝正',
+      url: 'http://kzg.io/b54cU3',
+      desc: '',
+    },
   ],
 
   others: [
