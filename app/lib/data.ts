@@ -101,6 +101,11 @@ export const videoData = {
       url: 'http://kzg.io/b54cU3',
       desc: '',
     },
+    {
+      title: '看中國：美國250週年：為何說信仰才是美國真正的立國根基？',
+      url: 'http://kzg.io/b54cU4',
+      desc: '',
+    },
   ],
 
   others: [
