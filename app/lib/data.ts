@@ -45,6 +45,11 @@ export const videoData = {
       url: 'https://www.ganjingworld.com/s/7vVxzxYeXV',
       desc: '',
     },
+    {
+      title: '國會議員讚神韻指路明燈 頒褒獎賀重返多倫多',
+      url: 'https://www.ganjingworld.com/s/8MKq4kw4qQ',
+      desc: '',
+    },
   ],
 
   audio: [
