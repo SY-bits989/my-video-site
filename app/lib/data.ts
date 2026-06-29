@@ -36,18 +36,28 @@ export const videoData = {
       desc: '',
     },
     {
-      title: '《堅不可摧》加拿大首映座談會 神韻藝術家們暢敘',
+      title: '新唐人：《堅不可摧》加拿大首映座談會 神韻藝術家們暢敘',
       url: 'https://www.ganjingworld.com/s/E3WN3bBvVb',
       desc: '',
     },
     {
-      title: '現場：神韻《堅不可摧：神韻幕後的故事》加拿大首映式Q&A',
+      title: '新唐人：神韻《堅不可摧：神韻幕後的故事》加拿大首映式Q&A',
       url: 'https://www.ganjingworld.com/s/7vVxzxYeXV',
       desc: '',
     },
     {
-      title: '國會議員讚神韻指路明燈 頒褒獎賀重返多倫多',
+      title: '新唐人：國會議員讚神韻指路明燈 頒褒獎賀重返多倫多',
       url: 'https://www.ganjingworld.com/s/8MKq4kw4qQ',
+      desc: '',
+    },
+    {
+      title: '加拿大新唐人：國際人權律師讚：神韻兼具藝術美感與人權內涵',
+      url: 'https://www.ganjingworld.com/s/mwWw9lXkk3',
+      desc: '',
+    },
+    {
+      title: '加拿大新唐人：國會議員褒獎 讚神韻重返多倫多是重要里程碑',
+      url: 'https://www.ganjingworld.com/s/7MRX3JKKRg',
       desc: '',
     },
   ],
