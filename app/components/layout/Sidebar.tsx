@@ -25,12 +25,12 @@ export default function Sidebar() {
       <div className={styles.topSection}>
         <Image
           src="/logo.png"
-          alt="善緣"
-          width={80}
-          height={80}
+          alt=""
+          width={280}
+          height={93}
           className={styles.logo}
+          priority
         />
-        <h1 className={styles.siteTitle}>善緣</h1>
       </div>
 
       <div className={styles.mainTabs}>
