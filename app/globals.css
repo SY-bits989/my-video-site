@@ -15,7 +15,7 @@ body {
     'Helvetica Neue',
     Arial,
     sans-serif;
-  background-color: #09090b;
+  background-color: #0b1026; /* 夜空主色（統一全站背景） */
   color: #f4f4f5;
   line-height: 1.6;
 }
@@ -26,14 +26,18 @@ body {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  background-color: #18181b;
+  background-color: #111827; /* 比夜空再深一層的卡片背景 */
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 1px solid #1f2937; /* 融入夜空的細邊框 */
 }
 
 .square-card:hover {
   transform: scale(1.04);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.4),
+    0 0 0 1px #334155,
+    0 0 12px rgba(245, 195, 106, 0.15); /* 加入極淡的星光微光效果 */
 }
 
 /* 通用容器 */
@@ -48,4 +52,23 @@ body {
   .container {
     padding: 0 1rem;
   }
+}
+
+/* ==================== 額外全站優化（建議加入） ==================== */
+
+/* 連結基礎樣式（與星光色呼應） */
+a {
+  color: #f5c36a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #f8f1d8; /* hover 變成月光色 */
+}
+
+/* 選取文字時的顏色（增加夜空氛圍） */
+::selection {
+  background-color: #f5c36a;
+  color: #0b1026;
 }

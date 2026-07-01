@@ -4,52 +4,115 @@
   padding: 1rem 1rem 2rem;
   max-width: 1100px;
   margin-left: 340px;
+  background-color: #0b1026;
 }
 
-/* 電腦版隱藏上方 Tab（因為 Sidebar 已有） */
+/* 電腦版隱藏上方 Tab */
 .mobileTabs {
   display: none;
 }
 
+/* ==================== 內容區域 Grid（回到 3 欄） ==================== */
 .contentArea {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 調大一點 */
+  gap: 1.4rem;
+}
+
+/* 大螢幕固定 3 欄 */
+@media (min-width: 1400px) {
+  .contentArea {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==================== 正方形卡片（優化版） ==================== */
+.itemCard {
+  aspect-ratio: 1 / 1;
+  background-color: #111827;
+  border-radius: 18px;
+  padding: 1.1rem 1.2rem; /* 繼續縮小內部留白 */
+  border: 1px solid #1f2937;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.itemCard {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 1rem;
-  border: 1px solid #ffffff;
+.itemCard:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.4),
+    0 0 0 1px #334155;
+  border-color: #475569;
 }
 
+/* 小標籤樣式 */
+.categoryTag {
+  align-self: flex-start;
+  background-color: #1f2937;
+  color: #f5c36a; /* 星光色 */
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.03em;
+}
+
+/* 標題區域 */
+.titleWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.4rem 0;
+}
+
+/* 標題文字 */
 .itemLink {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: #000000;
+  font-size: 1.22rem; /* 固定字體大小 */
+  font-weight: 700;
+  color: #f8f1d8;
   text-decoration: none;
-  display: block;
-  margin-bottom: 1rem;
-  line-height: 1.4;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 最多顯示 4 行 */
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
 }
 
 .itemLink:hover {
-  color: #0015ff;
+  color: #f5c36a;
   text-decoration: underline;
 }
 
-.desc {
-  color: #a1a1aa;
-  font-size: 1.05rem;
-  line-height: 1.7;
+/* 作者署名（移到標題下方） */
+.authorCredit {
+  font-size: 1rem; /* 保持原本大小 */
+  color: #f5c36a; /* 星光色 */
+  text-align: right;
+  margin-top: 0.6rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
+.authorCredit::before {
+  content: '—— ';
+  color: #94a3b8;
+}
+
+/* 嵌入視頻 */
 .embedContainer {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
+  border: 1px solid #1f2937;
 }
 
 /* ==================== 手機版 ==================== */
@@ -57,9 +120,9 @@
   .mainContent {
     margin-left: 0;
     padding: 1rem 0.8rem 2rem;
+    background-color: #0b1026;
   }
 
-  /* 手機版顯示橫向可滑動 Tab */
   .mobileTabs {
     display: flex;
     overflow-x: auto;
@@ -74,25 +137,43 @@
     display: none;
   }
 
+  .contentArea {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
   .mobileTab {
     padding: 0.75rem 1.2rem;
-    background-color: #27272a;
-    color: #a1a1aa;
+    background-color: #1f2937;
+    color: #f5c36a;
     border-radius: 9999px;
     font-size: 1rem;
     font-weight: 500;
     white-space: nowrap;
     text-decoration: none;
     flex-shrink: 0;
+    border: 1px solid #334155;
+    transition: all 0.2s ease;
+  }
+
+  .mobileTab:hover {
+    background-color: #334155;
+    color: #f8f1d8;
   }
 
   .mobileTabActive {
-    background-color: #3b82f6;
-    color: white;
+    background-color: #f8f1d8;
+    color: #0b1026;
+    border-color: #f8f1d8;
+    font-weight: 600;
   }
 
   .itemCard {
-    padding: 1.5rem;
+    padding: 1.4rem;
+  }
+
+  .itemLink {
+    font-size: 1.15rem;
   }
 }
 

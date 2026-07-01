@@ -3,8 +3,8 @@
 .sidebar {
   width: 320px;
   height: 100vh;
-  background-color: #09090b;
-  border-right: 1px solid #27272a;
+  background-color: #0b1026; /* 夜空主色 */
+  border-right: 1px solid #1f2937; /* 比原本更暗的邊框，融入夜空 */
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -17,12 +17,12 @@
 /* ==================== 電腦版 ==================== */
 .topSection {
   padding: 1.5rem 1.5rem 1.2rem;
-  border-bottom: 1px solid #27272a;
+  border-bottom: 1px solid #1f2937;
   display: flex;
   align-items: center;
   gap: 1rem;
   justify-content: center;
-  background: linear-gradient(to bottom, #18181b, #09090b);
+  background: #0b1026; /* 統一使用夜空色，不再用深灰漸層 */
 }
 
 .logo {
@@ -38,15 +38,16 @@
 .siteTitle {
   font-size: 2.1rem;
   font-weight: 700;
-  color: white;
+  color: #f8f1d8; /* 月光色（最亮焦點） */
   letter-spacing: 0.08em;
   margin: 0;
   line-height: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* 增加一點立體感 */
 }
 
 .mainTabs {
   padding: 1rem;
-  border-bottom: 1px solid #27272a;
+  border-bottom: 1px solid #1f2937;
 }
 
 .tab {
@@ -55,20 +56,21 @@
   margin-bottom: 0.5rem;
   border-radius: 12px;
   font-size: 1.1rem;
-  color: #a1a1aa;
+  color: #f5c36a; /* 星光色（散落的小亮點） */
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .tab:hover {
   background-color: #18181b;
-  color: white;
+  color: #f8f1d8; /* hover 時變成月光色 */
 }
 
 .tabActive {
-  background-color: white;
-  color: black;
+  background-color: #f8f1d8; /* 月光色（最亮焦點） */
+  color: #0b1026; /* 深色文字，確保對比 */
   font-weight: 600;
+  box-shadow: 0 4px 12px rgba(248, 241, 216, 0.15); /* 月光微弱發光感 */
 }
 
 .videoSection {
@@ -94,9 +96,10 @@
   aspect-ratio: 1 / 1;
   border-radius: 16px;
   overflow: hidden;
-  background-color: #18181b;
+  background-color: #111827; /* 比夜空再深一層的卡片背景 */
   cursor: pointer;
   position: relative;
+  border: 1px solid #1f2937;
 }
 
 .thumbnail {
@@ -111,9 +114,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(
+    transparent,
+    rgba(11, 16, 38, 0.85)
+  ); /* 使用夜空色做漸層 */
   padding: 1rem;
-  color: white;
+  color: #f5c36a; /* 星光色文字 */
   font-size: 1rem;
 }
 
@@ -124,7 +130,7 @@
     height: auto;
     position: relative;
     border-right: none;
-    border-bottom: 1px solid #27272a;
+    border-bottom: 1px solid #1f2937;
     overflow: visible;
   }
 
@@ -134,10 +140,11 @@
     justify-content: center;
     padding: 1.1rem 1rem;
     gap: 0.8rem;
+    background: #0b1026;
   }
 
   .logo {
-    width: 180px; /* 手機上建議的大小 */
+    width: 180px;
     height: auto;
     max-width: 100%;
     border-radius: 8px;
@@ -147,11 +154,12 @@
   .siteTitle {
     font-size: 1.65rem;
     margin: 0;
+    color: #f8f1d8;
   }
 
   .mainTabs {
     padding: 0.6rem 1rem;
-    border-bottom: 1px solid #27272a;
+    border-bottom: 1px solid #1f2937;
     display: flex;
     gap: 0.8rem;
   }
@@ -162,26 +170,24 @@
     margin-bottom: 0;
     flex: 1;
     text-align: center;
+    color: #f5c36a;
   }
 
-  /* 隱藏原創縮圖 */
-  .videoList {
-    display: none;
+  .tabActive {
+    background-color: #f8f1d8;
+    color: #0b1026;
   }
 
-  /* 強制隱藏側邊欄的精選 Tab */
+  .videoList,
+  .sectionTitle,
+  .videoSection,
   .subTabs,
   .subTab {
     display: none !important;
   }
-  /* 新增：隱藏手機版側邊欄的標題和分界線 */
-  .sectionTitle,
-  .videoSection {
-    display: none;
-  }
 }
 
-/* ==================== 精選第二層 Tab (內容區域使用) ==================== */
+/* ==================== 精選第二層 Tab ==================== */
 .subTabs {
   display: flex;
   flex-direction: column;
@@ -193,7 +199,7 @@
   padding: 0.95rem 1.4rem;
   border-radius: 12px;
   font-size: 1.05rem;
-  color: #a1a1aa;
+  color: #f5c36a; /* 星光色 */
   text-decoration: none;
   transition: all 0.25s ease;
   border: 1px solid transparent;
@@ -203,24 +209,25 @@
 
 .subTab:hover {
   background-color: #18181b;
-  color: #e4e4e7;
+  color: #f8f1d8; /* hover 變月光色 */
   transform: translateX(4px);
 }
 
 .subTabActive {
-  background-color: #27272a;
-  color: white;
+  background-color: #f8f1d8; /* 月光色 */
+  color: #0b1026;
   font-weight: 600;
-  border-color: #52525b;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: #f5c36a; /* 用星光色做邊框，增加層次 */
+  box-shadow: 0 4px 12px rgba(248, 241, 216, 0.2);
 }
 
-/* 手機版 - 第二層 Tab */
+/* 手機版第二層 Tab */
 @media (max-width: 1024px) {
   .subTabs {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
+    display: flex !important; /* 手機版還是顯示第二層 */
   }
 
   .subTab {
@@ -229,5 +236,11 @@
     flex: 1 1 auto;
     text-align: center;
     min-width: 115px;
+    color: #f5c36a;
+  }
+
+  .subTabActive {
+    background-color: #f8f1d8;
+    color: #0b1026;
   }
 }

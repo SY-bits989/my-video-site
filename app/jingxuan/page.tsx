@@ -19,8 +19,9 @@ function JingxuanContent() {
   const activeTab = searchParams.get('tab') || 'qiongding';
 
   const currentCategory = subCategories.find((cat) => cat.id === activeTab);
+
   const currentData: VideoItem[] = currentCategory
-    ? (videoData[currentCategory.key] as any) || []
+    ? (videoData[currentCategory.key] as unknown as VideoItem[]) || []
     : [];
 
   return (
@@ -43,22 +44,32 @@ function JingxuanContent() {
         {currentData.length > 0 ? (
           currentData.map((item, index) => (
             <div key={index} className={styles.itemCard}>
-              {'url' in item && item.url && (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.itemLink}
-                >
-                  {item.title}
-                </a>
+              {/* 小標籤 */}
+              {item.category && (
+                <div className={styles.categoryTag}>{item.category}</div>
               )}
 
-              {'desc' in item && item.desc && (
-                <p className={styles.desc}>{item.desc}</p>
+              {/* 標題區域（垂直居中） */}
+              <div className={styles.titleWrapper}>
+                {item.url && (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.itemLink}
+                  >
+                    {item.title}
+                  </a>
+                )}
+              </div>
+
+              {/* 作者（移到標題下方） */}
+              {item.author && (
+                <div className={styles.authorCredit}>{item.author}</div>
               )}
 
-              {'embedCode' in item && item.embedCode && (
+              {/* 嵌入視頻 */}
+              {item.embedCode && (
                 <div
                   className={styles.embedContainer}
                   dangerouslySetInnerHTML={{ __html: item.embedCode }}
