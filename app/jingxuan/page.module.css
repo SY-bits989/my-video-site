@@ -18,16 +18,16 @@
 }
 
 .itemCard {
-  background-color: #18181b;
+  background-color: #ffffff;
   border-radius: 16px;
-  padding: 1.8rem;
-  border: 1px solid #27272a;
+  padding: 1rem;
+  border: 1px solid #ffffff;
 }
 
 .itemLink {
   font-size: 1.35rem;
   font-weight: 600;
-  color: #60a5fa;
+  color: #000000;
   text-decoration: none;
   display: block;
   margin-bottom: 1rem;
@@ -35,7 +35,7 @@
 }
 
 .itemLink:hover {
-  color: #93c5fd;
+  color: #0015ff;
   text-decoration: underline;
 }
 
