@@ -27,7 +27,6 @@
 
 .logo {
   border-radius: 8px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
   flex-shrink: 0;
   width: 240px;
@@ -142,7 +141,6 @@
     height: auto;
     max-width: 100%;
     border-radius: 8px;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
     object-fit: contain;
   }
 

@@ -64,6 +64,12 @@ export const videoData = {
       url: 'https://www.ganjingworld.com/s/7MRX3JKKRg',
       desc: '',
     },
+    {
+      title:
+        '資深製片人讚神韻登峰造極 盼福澤中國大地 ——「加拿大新唐人中文新聞」',
+      url: 'https://www.ganjingworld.com/s/qlXz0Awa6A',
+      desc: '',
+    },
   ],
 
   audio: [
