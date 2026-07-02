@@ -1,42 +1,11 @@
+// app/components/layout/Sidebar.tsx
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { Suspense } from 'react';
 import styles from './Sidebar.module.css';
 import { originalVideos } from '../../lib/data';
-
-const subCategories = [
-  { id: 'qiongding', name: '穹頂樂', key: 'zenith' as const },
-  { id: 'tianding', name: '天頂視頻', key: 'top-video' as const },
-  { id: 'qiangu', name: '千古文化', key: 'culture' as const },
-  { id: 'miaoyin', name: '妙音', key: 'audio' as const },
-  { id: 'xuan', name: '玄', key: 'xuan' as const },
-  { id: 'meishi', name: '美味', key: 'others' as const },
-];
-
-function SubTabList() {
-  const searchParams = useSearchParams();
-  const currentTab = searchParams.get('tab') || 'qiongding';
-
-  return (
-    <>
-      {subCategories.map((cat) => {
-        const isActive = currentTab === cat.id;
-        return (
-          <Link
-            key={cat.id}
-            href={`/jingxuan?tab=${cat.id}`}
-            className={`${styles.subTab} ${isActive ? styles.subTabActive : ''}`}
-          >
-            {cat.name}
-          </Link>
-        );
-      })}
-    </>
-  );
-}
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -72,7 +41,7 @@ export default function Sidebar() {
 
       <div className={styles.videoSection}>
         {!isJingxuan ? (
-          // 原創
+          // 原創頁面
           <>
             <h3 className={styles.sectionTitle}>原創短視頻</h3>
             <div className={styles.videoList}>
@@ -93,14 +62,19 @@ export default function Sidebar() {
             </div>
           </>
         ) : (
-          // 精選分類
+          // 精選頁面（已移除分類 tab）
           <>
-            <h3 className={styles.sectionTitle}>精選分類</h3>
-            <div className={styles.subTabs}>
-              <Suspense fallback={null}>
-                <SubTabList />
-              </Suspense>
-            </div>
+            <h3 className={styles.sectionTitle}>精選內容</h3>
+            <p
+              style={{
+                color: '#71717a',
+                fontSize: '0.9rem',
+                paddingLeft: '0.5rem',
+                lineHeight: '1.5',
+              }}
+            >
+              所有精選內容一次顯示，包含穹頂樂、天頂視頻、千古文化等分類。
+            </p>
           </>
         )}
       </div>
