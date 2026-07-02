@@ -113,6 +113,36 @@
   overflow: hidden;
   background: #000;
   border: 1px solid #1f2937;
+  width: 100%;
+}
+
+/* 讓 iframe 以 16:9 比例顯示，並盡量放大 */
+.embedContainer iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important; /* 強制 16:9 比例 */
+  max-height: 560px; /* 可以再調大，例如 620px */
+  display: block;
+  border: none;
+}
+
+/* ==================== 嵌入視頻專用樣式（已優化） ==================== */
+
+/* 嵌入視頻的卡片 */
+.embedItem {
+  aspect-ratio: auto;
+  grid-column: 1 / -1; /* 獨佔整行 */
+  padding-bottom: 0; /* 底部不留白，讓視頻可以貼近 */
+}
+
+/* 讓視頻左右貼近卡片邊緣（去除兩側多餘邊框感） */
+.embedItem .embedContainer {
+  margin: 0.75rem -1.2rem 0; /* 左右使用負 margin，讓視頻變寬 */
+  width: calc(100% + 2.4rem);
+  border: none; /* 去除 embedContainer 的邊框 */
+  border-radius: 0 0 18px 18px; /* 只保留底部圓角，更乾淨 */
+  overflow: hidden;
+  background: #000;
 }
 
 /* ==================== 手機版 ==================== */
@@ -121,6 +151,21 @@
     margin-left: 0;
     padding: 1rem 0.8rem 2rem;
     background-color: #0b1026;
+  }
+
+  .embedItem .embedContainer {
+    margin: 0.6rem -1rem 0;
+    width: calc(100% + 2rem);
+    border-radius: 0 0 14px 14px;
+  }
+
+  .embedItem {
+    grid-column: span 1;
+    padding-bottom: 0;
+  }
+
+  .embedContainer iframe {
+    max-height: 420px; /* 手機上建議不要超過這個高度，比較好看 */
   }
 
   .mobileTabs {

@@ -43,7 +43,10 @@ function JingxuanContent() {
       <div className={styles.contentArea}>
         {currentData.length > 0 ? (
           currentData.map((item, index) => (
-            <div key={index} className={styles.itemCard}>
+            <div
+              key={index}
+              className={`${styles.itemCard} ${item.embedCode ? styles.embedItem : ''}`}
+            >
               {/* 小標籤 */}
               {item.category && (
                 <div className={styles.categoryTag}>{item.category}</div>

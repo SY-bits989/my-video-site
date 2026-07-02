@@ -14,16 +14,20 @@ function DesktopVideoPlayer() {
 
   return (
     <div className={styles.desktopView}>
-      <h1 className={styles.mainTitle}>{currentVideo.title}</h1>
-      <div className={styles.playerWrapper}>
-        <video
-          controls
-          className={styles.videoPlayer}
-          poster={currentVideo.thumbnail}
-          key={currentVideo.videoSrc}
-        >
-          <source src={currentVideo.videoSrc} type="video/mp4" />
-        </video>
+      <div className={styles.playerBlock}>
+        <div className={styles.playerWrapper}>
+          <video
+            controls
+            className={styles.videoPlayer}
+            poster={currentVideo.thumbnail}
+            key={currentVideo.videoSrc}
+          >
+            <source src={currentVideo.videoSrc} type="video/mp4" />
+          </video>
+        </div>
+
+        {/* 標題移到播放器下方 */}
+        <h1 className={styles.mainTitle}>{currentVideo.title}</h1>
       </div>
     </div>
   );
