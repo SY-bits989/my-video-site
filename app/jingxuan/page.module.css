@@ -1,5 +1,4 @@
-/* app/jingxuan/page.module.css */
-
+/* ==================== 基礎樣式 ==================== */
 .mainContent {
   padding: 1rem 1rem 2rem;
   max-width: 1100px;
@@ -7,31 +6,19 @@
   background-color: #0b1026;
 }
 
-/* 電腦版隱藏上方 Tab */
-.mobileTabs {
-  display: none;
-}
-
-/* ==================== 內容區域 Grid（回到 3 欄） ==================== */
+/* ==================== 內容區域 Grid ==================== */
 .contentArea {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 調大一點 */
+  grid-template-columns: repeat(3, 1fr); /* 電腦版固定 3 欄 */
   gap: 1.4rem;
 }
 
-/* 大螢幕固定 3 欄 */
-@media (min-width: 1400px) {
-  .contentArea {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ==================== 正方形卡片（優化版） ==================== */
+/* ==================== 卡片樣式（統一） ==================== */
 .itemCard {
   aspect-ratio: 1 / 1;
   background-color: #111827;
   border-radius: 18px;
-  padding: 1.1rem 1.2rem; /* 繼續縮小內部留白 */
+  padding: 1.1rem 1.2rem;
   border: 1px solid #1f2937;
   display: flex;
   flex-direction: column;
@@ -47,20 +34,17 @@
   border-color: #475569;
 }
 
-/* 小標籤樣式 */
 .categoryTag {
   align-self: flex-start;
   background-color: #1f2937;
-  color: #f5c36a; /* 星光色 */
+  color: #f5c36a;
   font-size: 0.75rem;
   font-weight: 500;
   padding: 0.2rem 0.55rem;
   border-radius: 6px;
   margin-bottom: 0.6rem;
-  letter-spacing: 0.03em;
 }
 
-/* 標題區域 */
 .titleWrapper {
   flex: 1;
   display: flex;
@@ -70,19 +54,17 @@
   padding: 0.4rem 0;
 }
 
-/* 標題文字 */
 .itemLink {
-  font-size: 1.22rem; /* 固定字體大小 */
+  font-size: 1.22rem;
   font-weight: 700;
   color: #f8f1d8;
   text-decoration: none;
   line-height: 1.35;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* 最多顯示 4 行 */
+  -webkit-line-clamp: 4;
   line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: color 0.2s ease;
 }
 
 .itemLink:hover {
@@ -90,15 +72,13 @@
   text-decoration: underline;
 }
 
-/* 作者署名（移到標題下方） */
 .authorCredit {
-  font-size: 1rem; /* 保持原本大小 */
-  color: #f5c36a; /* 星光色 */
+  font-size: 1rem;
+  color: #f5c36a;
   text-align: right;
   margin-top: 0.6rem;
   margin-bottom: 0.4rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
 }
 
 .authorCredit::before {
@@ -106,7 +86,7 @@
   color: #94a3b8;
 }
 
-/* 嵌入視頻 */
+/* ==================== 嵌入視頻（電腦版佔整行） ==================== */
 .embedContainer {
   margin-top: 1rem;
   border-radius: 12px;
@@ -116,112 +96,82 @@
   width: 100%;
 }
 
-/* 讓 iframe 以 16:9 比例顯示，並盡量放大 */
 .embedContainer iframe {
   width: 100% !important;
   height: auto !important;
-  aspect-ratio: 16 / 9 !important; /* 強制 16:9 比例 */
-  max-height: 560px; /* 可以再調大，例如 620px */
+  aspect-ratio: 16 / 9 !important;
+  max-height: 560px;
   display: block;
   border: none;
 }
 
-/* ==================== 嵌入視頻專用樣式（已優化） ==================== */
-
-/* 嵌入視頻的卡片 */
 .embedItem {
   aspect-ratio: auto;
-  grid-column: 1 / -1; /* 獨佔整行 */
-  padding-bottom: 0; /* 底部不留白，讓視頻可以貼近 */
+  grid-column: 1 / -1; /* 電腦版嵌入視頻佔整行 */
+  padding-bottom: 0;
 }
 
-/* 讓視頻左右貼近卡片邊緣（去除兩側多餘邊框感） */
 .embedItem .embedContainer {
-  margin: 0.75rem -1.2rem 0; /* 左右使用負 margin，讓視頻變寬 */
+  margin: 0.75rem -1.2rem 0;
   width: calc(100% + 2.4rem);
-  border: none; /* 去除 embedContainer 的邊框 */
-  border-radius: 0 0 18px 18px; /* 只保留底部圓角，更乾淨 */
+  border: none;
+  border-radius: 0 0 18px 18px;
   overflow: hidden;
   background: #000;
 }
 
-/* ==================== 手機版 ==================== */
+/* ==================== 手機版優化（加強一致性） ==================== */
 @media (max-width: 1024px) {
   .mainContent {
     margin-left: 0;
     padding: 1rem 0.8rem 2rem;
     background-color: #0b1026;
-  }
-
-  .embedItem .embedContainer {
-    margin: 0.6rem -1rem 0;
-    width: calc(100% + 2rem);
-    border-radius: 0 0 14px 14px;
-  }
-
-  .embedItem {
-    grid-column: span 1;
-    padding-bottom: 0;
-  }
-
-  .embedContainer iframe {
-    max-height: 420px; /* 手機上建議不要超過這個高度，比較好看 */
-  }
-
-  .mobileTabs {
-    display: flex;
-    overflow-x: auto;
-    gap: 0.8rem;
-    padding: 1rem 0.8rem;
-    scrollbar-width: none;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .mobileTabs::-webkit-scrollbar {
-    display: none;
+    max-width: 100%;
   }
 
   .contentArea {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem; /* 稍微縮小間距 */
   }
 
-  .mobileTab {
-    padding: 0.75rem 1.2rem;
-    background-color: #1f2937;
-    color: #f5c36a;
-    border-radius: 9999px;
-    font-size: 1rem;
-    font-weight: 500;
-    white-space: nowrap;
-    text-decoration: none;
-    flex-shrink: 0;
-    border: 1px solid #334155;
-    transition: all 0.2s ease;
-  }
-
-  .mobileTab:hover {
-    background-color: #334155;
-    color: #f8f1d8;
-  }
-
-  .mobileTabActive {
-    background-color: #f8f1d8;
-    color: #0b1026;
-    border-color: #f8f1d8;
-    font-weight: 600;
-  }
-
+  /* 統一所有卡片（包含天頂視頻） */
   .itemCard {
-    padding: 1.4rem;
+    aspect-ratio: 1 / 1;
+    padding: 0.7rem 0.8rem; /* 減少內距，讓卡片更緊湊 */
+    background-color: #111827;
+    border-radius: 16px;
+    border: 1px solid #1f2937;
   }
 
   .itemLink {
-    font-size: 1.15rem;
+    font-size: 0.92rem; /* 再縮小一點標題字體 */
+    line-height: 1.28;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .titleWrapper {
+    padding: 0.2rem 0; /* 減少標題區域的上下空白 */
+  }
+
+  .categoryTag {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .authorCredit {
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .embedContainer iframe {
+    max-height: 340px;
   }
 }
 
+/* 空狀態 */
 .empty {
   text-align: center;
   color: #71717a;

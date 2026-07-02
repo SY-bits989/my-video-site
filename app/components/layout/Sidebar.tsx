@@ -1,9 +1,9 @@
-// app/components/layout/Sidebar.tsx
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import { Suspense } from 'react';
 import styles from './Sidebar.module.css';
 import { originalVideos } from '../../lib/data';
 
@@ -15,6 +15,28 @@ const subCategories = [
   { id: 'xuan', name: '玄', key: 'xuan' as const },
   { id: 'meishi', name: '美味', key: 'others' as const },
 ];
+
+function SubTabList() {
+  const searchParams = useSearchParams();
+  const currentTab = searchParams.get('tab') || 'qiongding';
+
+  return (
+    <>
+      {subCategories.map((cat) => {
+        const isActive = currentTab === cat.id;
+        return (
+          <Link
+            key={cat.id}
+            href={`/jingxuan?tab=${cat.id}`}
+            className={`${styles.subTab} ${isActive ? styles.subTabActive : ''}`}
+          >
+            {cat.name}
+          </Link>
+        );
+      })}
+    </>
+  );
+}
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -71,19 +93,13 @@ export default function Sidebar() {
             </div>
           </>
         ) : (
-          // 精選 - 簡化版（暫時不顯示 active 狀態）
+          // 精選分類
           <>
             <h3 className={styles.sectionTitle}>精選分類</h3>
             <div className={styles.subTabs}>
-              {subCategories.map((cat) => (
-                <Link
-                  key={cat.id}
-                  href={`/jingxuan?tab=${cat.id}`}
-                  className={styles.subTab}
-                >
-                  {cat.name}
-                </Link>
-              ))}
+              <Suspense fallback={null}>
+                <SubTabList />
+              </Suspense>
             </div>
           </>
         )}

@@ -10,6 +10,13 @@ export type VideoItem = {
 };
 
 export const videoData = {
+  zenith: [
+    {
+      title: '2023 神韻交響樂 《筷子舞》',
+      type: 'embed' as const,
+      embedCode: `<iframe width="100%" height="500" src="https://www.shenyuncreations.com/zh-TW/embed/_video_e606bd9dcdcc48739fa9ec4a71b090c5/Mongolian-Chopsticks---2023-Shen-Yun-Symphony-Orchestra?pid=p_BkqASChRSLaH" title="2023 神韻交響樂 《筷子舞》" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowfullscreen></iframe>`,
+    },
+  ],
   'top-video': [
     {
       title: '神韻早期節目: 梁山伯與祝英台片段',
@@ -79,33 +86,6 @@ export const videoData = {
     },
   ],
 
-  audio: [
-    {
-      title: '大法是歸度',
-      url: 'https://www.joankingmusic.com/blog/music000442',
-      author: '「凈泉音樂原創」',
-      category: '妙音',
-    },
-    {
-      title: '萬王之王',
-      url: 'https://www.joankingmusic.com/blog/music000349',
-      author: '「凈泉音樂原創」',
-      category: '妙音',
-    },
-    {
-      title: '雨中燈',
-      url: 'https://www.joankingmusic.com/blog/music000394',
-      author: '「凈泉音樂原創」',
-      category: '妙音',
-    },
-    {
-      title: '彼岸',
-      url: 'https://www.joankingmusic.com/blog/music000446',
-      author: '「凈泉音樂原創」',
-      category: '妙音',
-    },
-  ],
-
   culture: [
     {
       title: '這樣做 讓你的孩子愛上閱讀(圖)',
@@ -163,6 +143,43 @@ export const videoData = {
     },
   ],
 
+  audio: [
+    {
+      title: '大法是歸度',
+      url: 'https://www.joankingmusic.com/blog/music000442',
+      author: '「凈泉音樂原創」',
+      category: '妙音',
+    },
+    {
+      title: '萬王之王',
+      url: 'https://www.joankingmusic.com/blog/music000349',
+      author: '「凈泉音樂原創」',
+      category: '妙音',
+    },
+    {
+      title: '雨中燈',
+      url: 'https://www.joankingmusic.com/blog/music000394',
+      author: '「凈泉音樂原創」',
+      category: '妙音',
+    },
+    {
+      title: '彼岸',
+      url: 'https://www.joankingmusic.com/blog/music000446',
+      author: '「凈泉音樂原創」',
+      category: '妙音',
+    },
+  ],
+
+  // 新增這一段
+  xuan: [
+    {
+      title: '150歲延壽工程還在進行;遠古國王真的活了幾千歲? 蘇美爾王表之謎',
+      url: 'https://www.ganjingworld.com/s/6gAVMWwo4y',
+      author: '「玄乎神乎」',
+      category: '“延壽”？',
+    },
+  ],
+
   others: [
     {
       title:
@@ -188,24 +205,6 @@ export const videoData = {
   ],
 
   original: [],
-
-  zenith: [
-    {
-      title: '2023 神韻交響樂 《筷子舞》',
-      type: 'embed' as const,
-      embedCode: `<iframe width="100%" height="500" src="https://www.shenyuncreations.com/zh-TW/embed/_video_e606bd9dcdcc48739fa9ec4a71b090c5/Mongolian-Chopsticks---2023-Shen-Yun-Symphony-Orchestra?pid=p_BkqASChRSLaH" title="2023 神韻交響樂 《筷子舞》" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowfullscreen></iframe>`,
-    },
-  ],
-
-  // 新增這一段
-  xuan: [
-    {
-      title: '150歲延壽工程還在進行;遠古國王真的活了幾千歲? 蘇美爾王表之謎',
-      url: 'https://www.ganjingworld.com/s/6gAVMWwo4y',
-      author: '「玄乎神乎」',
-      category: '“延壽”？',
-    },
-  ],
 } as const;
 // ==================== 善緣原創視頻 ====================
 

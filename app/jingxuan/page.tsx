@@ -1,90 +1,70 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import { videoData, VideoItem } from '../lib/data';
 import styles from './page.module.css';
-import { Suspense } from 'react';
 
-const subCategories = [
-  { id: 'qiongding', name: '穹頂樂', key: 'zenith' as const },
-  { id: 'tianding', name: '天頂視頻', key: 'top-video' as const },
-  { id: 'qiangu', name: '千古文化', key: 'culture' as const },
-  { id: 'miaoyin', name: '妙音', key: 'audio' as const },
-  { id: 'xuan', name: '玄', key: 'xuan' as const },
-  { id: 'meishi', name: '美味', key: 'others' as const },
-] as const;
+const categoryMap: Record<string, keyof typeof videoData> = {
+  qiongding: 'zenith',
+  tianding: 'top-video',
+  qiangu: 'culture',
+  miaoyin: 'audio',
+  xuan: 'xuan',
+  meishi: 'others',
+};
 
 function JingxuanContent() {
   const searchParams = useSearchParams();
   const activeTab = searchParams.get('tab') || 'qiongding';
+  const dataKey = categoryMap[activeTab] || 'zenith';
 
-  const currentCategory = subCategories.find((cat) => cat.id === activeTab);
-
-  const currentData: VideoItem[] = currentCategory
-    ? (videoData[currentCategory.key] as unknown as VideoItem[]) || []
-    : [];
+  const currentData: VideoItem[] =
+    (videoData[dataKey] as unknown as VideoItem[]) || [];
 
   return (
-    <>
-      {/* 手機版橫向 Tab */}
-      <div className={styles.mobileTabs}>
-        {subCategories.map((cat) => (
-          <a
-            key={cat.id}
-            href={`/jingxuan?tab=${cat.id}`}
-            className={`${styles.mobileTab} ${activeTab === cat.id ? styles.mobileTabActive : ''}`}
+    <div className={styles.contentArea}>
+      {currentData.length > 0 ? (
+        currentData.map((item, index) => (
+          <div
+            key={index}
+            className={`${styles.itemCard} ${item.embedCode ? styles.embedItem : ''}`}
           >
-            {cat.name}
-          </a>
-        ))}
-      </div>
+            {item.category && (
+              <div className={styles.categoryTag}>{item.category}</div>
+            )}
 
-      {/* 內容區域 */}
-      <div className={styles.contentArea}>
-        {currentData.length > 0 ? (
-          currentData.map((item, index) => (
-            <div
-              key={index}
-              className={`${styles.itemCard} ${item.embedCode ? styles.embedItem : ''}`}
-            >
-              {/* 小標籤 */}
-              {item.category && (
-                <div className={styles.categoryTag}>{item.category}</div>
-              )}
-
-              {/* 標題區域（垂直居中） */}
-              <div className={styles.titleWrapper}>
-                {item.url && (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.itemLink}
-                  >
-                    {item.title}
-                  </a>
-                )}
-              </div>
-
-              {/* 作者（移到標題下方） */}
-              {item.author && (
-                <div className={styles.authorCredit}>{item.author}</div>
-              )}
-
-              {/* 嵌入視頻 */}
-              {item.embedCode && (
-                <div
-                  className={styles.embedContainer}
-                  dangerouslySetInnerHTML={{ __html: item.embedCode }}
-                />
+            <div className={styles.titleWrapper}>
+              {item.url ? (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.itemLink}
+                >
+                  {item.title}
+                </a>
+              ) : (
+                <span className={styles.itemLink}>{item.title}</span>
               )}
             </div>
-          ))
-        ) : (
-          <p className={styles.empty}>此分類暫無內容</p>
-        )}
-      </div>
-    </>
+
+            {item.author && (
+              <div className={styles.authorCredit}>{item.author}</div>
+            )}
+
+            {item.embedCode && (
+              <div
+                className={styles.embedContainer}
+                dangerouslySetInnerHTML={{ __html: item.embedCode }}
+              />
+            )}
+          </div>
+        ))
+      ) : (
+        <p className={styles.empty}>此分類暫無內容</p>
+      )}
+    </div>
   );
 }
 
