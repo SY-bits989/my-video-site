@@ -184,37 +184,40 @@
   }
 }
 
-/* ==================== 精選分類 Tab ==================== */
+/* ==================== 精選分類 Tab（Sidebar） ==================== */
 .subTabs {
   display: flex;
-  flex-direction: column; /* 電腦版預設垂直 */
-  gap: 0.65rem;
-  padding: 0.5rem 0;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.35rem 0.2rem 0;
 }
 
 .subTab {
-  padding: 0.95rem 1.4rem;
-  border-radius: 12px;
-  font-size: 1.05rem;
-  color: #f5c36a;
+  display: block;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 0.97rem;
+  color: #e2e8f0;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   border: 1px solid transparent;
   font-weight: 500;
 }
 
 .subTab:hover {
-  background-color: #18181b;
-  color: #f8f1d8;
-  transform: translateX(4px);
+  background-color: #1f2937;
+  color: #f5c36a;
+  transform: translateX(3px);
 }
 
+/* 電腦版選中效果 */
 .subTabActive {
   background-color: #f8f1d8;
   color: #0b1026;
   font-weight: 600;
   border-color: #f5c36a;
   box-shadow: 0 4px 12px rgba(248, 241, 216, 0.2);
+  transform: none;
 }
 
 /* ==================== 手機版分類 Tab（緊湊版） ==================== */
@@ -223,26 +226,29 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.35rem;
-    display: flex !important;
-    padding: 0.3rem 0;
+    padding: 0.25rem 0;
   }
 
   .subTab {
-    padding: 0.38rem 0.65rem;
-    font-size: 0.88rem;
-    flex: 1 1 auto;
+    flex: 1 1 calc(33.333% - 0.35rem); /* 改成 3 欄 */
+    padding: 0.32rem 0.5rem; /* 更緊湊 */
+    font-size: 0.82rem; /* 保持小字 */
     text-align: center;
-    min-width: 82px;
+    min-width: 72px;
     border-radius: 9999px;
+    transform: none;
   }
 
   .subTab:hover {
     transform: none;
+    background-color: #1f2937;
+    color: #f5c36a;
   }
 
   .subTabActive {
     background-color: #f8f1d8;
     color: #0b1026;
     font-weight: 600;
+    border-color: #f5c36a;
   }
 }

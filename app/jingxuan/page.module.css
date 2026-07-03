@@ -166,8 +166,35 @@
     margin-bottom: 0.3rem;
   }
 
+  /* ========== 新增這一段：修正嵌入視頻溢出 ========== */
+  .embedItem .embedContainer {
+    margin: 0.5rem -0.8rem 0; /* 改小負 margin，避免溢出 */
+    width: calc(100% + 1.6rem);
+    border-radius: 0 0 16px 16px; /* 配合手機版卡片圓角 */
+  }
+
   .embedContainer iframe {
     max-height: 340px;
+  }
+
+  /* ========== 手機版嵌入視頻標題區強力壓縮 ========== */
+  .embedItem .titleWrapper {
+    flex: none !important; /* 關鍵：取消 flex: 1 的撐開效果 */
+    padding: 0.02rem 0 !important;
+    margin-bottom: 0.15rem !important;
+    min-height: auto !important;
+  }
+
+  .embedItem .itemLink {
+    font-size: 0.9rem !important;
+    line-height: 1.15 !important;
+    padding: 0.1rem 0 !important;
+  }
+  /* ========== 讓手機版嵌入視頻卡片不要強制正方形 ========== */
+  .embedItem {
+    aspect-ratio: auto !important; /* 關鍵：取消正方形限制 */
+    height: auto !important;
+    min-height: unset;
   }
 }
 

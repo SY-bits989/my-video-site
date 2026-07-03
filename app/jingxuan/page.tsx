@@ -1,4 +1,5 @@
-import { videoData, VideoItem } from '../lib/data';
+// app/jingxuan/page.tsx
+import { videoData, type VideoItem } from '../lib/data';
 import styles from './page.module.css';
 
 const subCategories = [
@@ -14,13 +15,12 @@ export default function JingxuanPage() {
   return (
     <div className={styles.mainContent}>
       {subCategories.map((cat) => {
-        // 修正重點：使用 as unknown as 再轉一次
-        const items = (videoData[cat.key] as unknown as VideoItem[]) || [];
+        const items = videoData[cat.key] as VideoItem[];
 
         if (items.length === 0) return null;
 
         return (
-          <div key={cat.id} style={{ marginBottom: '3rem' }}>
+          <div key={cat.id} id={cat.id} style={{ marginBottom: '3rem' }}>
             <h2
               style={{
                 color: '#f5c36a',
@@ -33,42 +33,53 @@ export default function JingxuanPage() {
             </h2>
 
             <div className={styles.contentArea}>
-              {items.map((item, index) => (
-                <div
-                  key={index}
-                  className={`${styles.itemCard} ${item.embedCode ? styles.embedItem : ''}`}
-                >
-                  {item.category && (
-                    <div className={styles.categoryTag}>{item.category}</div>
-                  )}
-
-                  <div className={styles.titleWrapper}>
-                    {item.url ? (
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.itemLink}
-                      >
-                        {item.title}
-                      </a>
-                    ) : (
-                      <span className={styles.itemLink}>{item.title}</span>
-                    )}
-                  </div>
-
-                  {item.author && (
-                    <div className={styles.authorCredit}>{item.author}</div>
-                  )}
-
-                  {item.embedCode && (
+              {items.map((item, index) => {
+                // ==================== Type Narrowing（重點修正） ====================
+                if (item.type === 'embed') {
+                  // 這裡 TypeScript 知道 item 是 EmbedVideoItem
+                  return (
                     <div
-                      className={styles.embedContainer}
-                      dangerouslySetInnerHTML={{ __html: item.embedCode }}
-                    />
-                  )}
-                </div>
-              ))}
+                      key={index}
+                      className={`${styles.itemCard} ${styles.embedItem}`}
+                    >
+                      <div className={styles.titleWrapper}>
+                        <span className={styles.itemLink}>{item.title}</span>
+                      </div>
+
+                      <div
+                        className={styles.embedContainer}
+                        dangerouslySetInnerHTML={{ __html: item.embedCode }}
+                      />
+                    </div>
+                  );
+                } else {
+                  // 這裡 TypeScript 知道 item 是 LinkVideoItem
+                  return (
+                    <div key={index} className={styles.itemCard}>
+                      {item.category && (
+                        <div className={styles.categoryTag}>
+                          {item.category}
+                        </div>
+                      )}
+
+                      <div className={styles.titleWrapper}>
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.itemLink}
+                        >
+                          {item.title}
+                        </a>
+                      </div>
+
+                      {item.author && (
+                        <div className={styles.authorCredit}>{item.author}</div>
+                      )}
+                    </div>
+                  );
+                }
+              })}
             </div>
           </div>
         );
