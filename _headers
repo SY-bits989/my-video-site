@@ -1,0 +1,24 @@
+# ==================== Cloudflare Pages 快取設定 ====================
+
+# 靜態資源（JS、CSS、圖片、字體等）- 長期快取
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Build 後的靜態資源
+/_build/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 圖片、影片等媒體檔案
+/*.jpg
+/*.jpeg
+/*.png
+/*.gif
+/*.webp
+/*.svg
+/*.mp4
+/*.webm
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML 頁面（不要快取太久，讓內容能更新）
+/*
+  Cache-Control: public, max-age=0, must-revalidate
