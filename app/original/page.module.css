@@ -1,0 +1,175 @@
+.container {
+  background-color: #0b1026;
+  min-height: 100vh;
+  padding: 1.5rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 頂部導航 */
+.topNav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.navButton {
+  padding: 0.6rem 1.2rem;
+  background-color: #1f2937;
+  color: #f5c36a;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  flex: 1;
+  text-align: center;
+}
+
+/* ==================== 電腦版 ==================== */
+.desktopOnly {
+  display: block;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f8f1d8;
+  margin-bottom: 1.2rem;
+  padding-left: 0.5rem;
+}
+
+.thumbnailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.thumbnailCard {
+  background-color: #111827;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.thumbnailCard:hover {
+  border-color: #f5c36a;
+  transform: translateY(-4px);
+}
+
+.thumbnailImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.thumbnailTitle {
+  padding: 0.75rem 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f8f1d8;
+  text-align: center;
+}
+
+/* Modal（電腦版） */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background-color: #111827;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 860px;
+  position: relative;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.modalPlayer {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #000;
+}
+
+.modalVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.modalTitle {
+  padding: 1.2rem 1.5rem;
+  font-size: 1.5rem;
+  color: #f8f1d8;
+  margin: 0;
+  text-align: center;
+}
+
+/* ==================== 手機版 ==================== */
+@media (max-width: 767px) {
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
+  .mobileFeedItem {
+    margin-bottom: 2rem;
+    background-color: #111827;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #1f2937;
+  }
+
+  .mobileFeedTitle {
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #f8f1d8;
+    background-color: #1f2937;
+  }
+
+  .mobilePlayerWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #000;
+  }
+
+  .mobileVideoPlayer {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}

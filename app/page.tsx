@@ -1,141 +1,46 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
-import { originalVideos } from './lib/data';
+// app/page.tsx
+import Link from 'next/link';
 import styles from './page.module.css';
-import { useEffect, useRef, Suspense } from 'react';
 
-function DesktopVideoPlayer() {
-  const searchParams = useSearchParams();
-  const videoIdParam = searchParams.get('video');
-  const currentVideo =
-    originalVideos.find((v) => String(v.id) === videoIdParam) ||
-    originalVideos[1];
-
+export default function HomePage() {
   return (
-    <div className={styles.desktopView}>
-      <div className={styles.playerBlock}>
-        <div className={styles.playerWrapper}>
-          <video
-            controls
-            className={styles.videoPlayer}
-            poster={currentVideo.thumbnail}
-            key={currentVideo.videoSrc}
-          >
-            <source src={currentVideo.videoSrc} type="video/mp4" />
-          </video>
+    <div className={styles.container}>
+      {/* ==================== Hero ==================== */}
+      <section className={styles.hero}>
+        <div className={styles.heroImage}>
+          <div className={styles.heroOverlay} />
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>善緣</h1>
+          </div>
         </div>
+      </section>
 
-        {/* 標題移到播放器下方 */}
-        <h1 className={styles.mainTitle}>{currentVideo.title}</h1>
-      </div>
-    </div>
-  );
-}
-
-export default function OriginalPage() {
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
-  useEffect(() => {
-    const videos = videoRefs.current.filter(
-      (v): v is HTMLVideoElement => v !== null,
-    );
-
-    // 強制只允許一個視頻播放（已驗證有效）
-    const handlePlay = (currentVideo: HTMLVideoElement) => {
-      videos.forEach((video) => {
-        if (video !== currentVideo) video.pause();
-      });
-    };
-
-    videos.forEach((video) => {
-      video.addEventListener('play', () => handlePlay(video));
-    });
-
-    // ==================== 自動播放（已修正 TypeScript 錯誤） ====================
-    let observer: IntersectionObserver | null = null;
-
-    const timer = setTimeout(() => {
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            const video = entry.target as HTMLVideoElement;
-
-            if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
-              // 暫停其他視頻
-              videos.forEach((v) => {
-                if (v !== video) v.pause();
-              });
-
-              video.muted = true;
-              video.play().catch(() => {});
-            } else {
-              video.pause();
-            }
-          });
-        },
-        {
-          threshold: 0.4,
-          rootMargin: '0px 0px -20% 0px',
-        },
-      );
-
-      videos.forEach((video) => observer!.observe(video));
-    }, 800);
-
-    return () => {
-      clearTimeout(timer);
-      videos.forEach((video) => {
-        video.removeEventListener('play', () => handlePlay(video));
-      });
-      if (observer) observer.disconnect();
-    };
-  }, []);
-
-  return (
-    <div className={styles.mainContent}>
-      <Suspense
-        fallback={
-          <div className={styles.desktopView}>
+      {/* ==================== 探索區塊（兩個大縮圖） ==================== */}
+      <section className={styles.exploreSection}>
+        <div className={styles.exploreGrid}>
+          {/* 原創視頻 */}
+          <Link href="/original" className={styles.exploreCard}>
             <div
-              style={{
-                padding: '3rem 1rem',
-                textAlign: 'center',
-                color: '#666',
-              }}
-            >
-              載入中...
+              className={styles.exploreImage}
+              style={{ backgroundImage: `url('/original-preview.jpg')` }}
+            />
+            <div className={styles.exploreOverlay}>
+              <h2 className={styles.exploreTitle}>原創視頻</h2>
             </div>
-          </div>
-        }
-      >
-        <DesktopVideoPlayer />
-      </Suspense>
+          </Link>
 
-      <div className={styles.mobileFeed}>
-        {originalVideos.map((video, index) => (
-          <div key={video.id} className={styles.feedItem}>
-            <div className={styles.feedTitle}>{video.title}</div>
-
-            <div className={styles.videoContainer}>
-              <video
-                ref={(el) => {
-                  videoRefs.current[index] = el;
-                }}
-                controls
-                className={styles.feedVideo}
-                poster={video.thumbnail}
-                loop
-                playsInline
-                muted
-                preload="metadata"
-              >
-                <source src={video.videoSrc} type="video/mp4" />
-              </video>
+          {/* 精選內容 */}
+          <Link href="/jingxuan" className={styles.exploreCard}>
+            <div
+              className={styles.exploreImage}
+              style={{ backgroundImage: `url('/jingxuan-preview.jpg')` }}
+            />
+            <div className={styles.exploreOverlay}>
+              <h2 className={styles.exploreTitle}>精選內容</h2>
             </div>
-          </div>
-        ))}
-      </div>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

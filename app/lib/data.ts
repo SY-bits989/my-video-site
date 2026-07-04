@@ -266,3 +266,19 @@ export const originalVideos: OriginalVideo[] = [
     thumbnail: '/videos/xxmx.jpg',
   },
 ];
+// ==================== 創作實驗（Lab Experiments） ====================
+export type LabExperiment = {
+  id: string;
+  title: string;
+  thumbnail: string;
+  videoSrc: string;
+};
+
+export const labExperiments: LabExperiment[] = [
+  {
+    id: 'exp-1',
+    title: 'Grok 影像創作實驗 #01',
+    thumbnail: '/videos/lab-exp-1.jpg',
+    videoSrc: '/videos/lab-exp-1.mp4',
+  },
+];

@@ -1,122 +1,170 @@
 'use client';
 
-import { useState } from 'react';
-import { originalVideos } from '../lib/data';
+import { useState, useRef } from 'react';
+import Link from 'next/link';
+import { originalVideos, labExperiments } from '../lib/data';
+import styles from './page.module.css';
+
+interface PlayItem {
+  title: string;
+  videoSrc: string;
+  thumbnail: string;
+}
 
 export default function OriginalPage() {
-  const [currentVideo, setCurrentVideo] = useState(originalVideos[0]);
+  const [playItem, setPlayItem] = useState<PlayItem | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const allItems: PlayItem[] = [
+    ...originalVideos.map((v) => ({
+      title: v.title,
+      videoSrc: v.videoSrc,
+      thumbnail: v.thumbnail,
+    })),
+    ...labExperiments.map((exp) => ({
+      title: exp.title,
+      videoSrc: exp.videoSrc,
+      thumbnail: exp.thumbnail,
+    })),
+  ];
+
+  // 電腦版開啟 Modal
+  const openModal = (item: PlayItem) => {
+    setPlayItem(item);
+  };
+
+  const closeModal = () => {
+    setPlayItem(null);
+  };
+
+  // 手機版互斥播放
+  const handleMobilePlay = (index: number) => {
+    videoRefs.current.forEach((video, i) => {
+      if (video && i !== index) {
+        video.pause();
+      }
+    });
+  };
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
-      {/* 上方大播放器 */}
-      <div
-        style={{
-          maxWidth: '620px',
-          margin: '0 auto 60px',
-          borderRadius: '20px',
-          overflow: 'hidden',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-        }}
-      >
-        <video
-          key={currentVideo.id}
-          controls
-          autoPlay
-          style={{ width: '100%', height: 'auto', display: 'block' }}
-        >
-          <source src={currentVideo.videoSrc} type="video/mp4" />
-          您的瀏覽器不支援播放此視頻。
-        </video>
+    <div className={styles.container}>
+      {/* 頂部導航按鈕 */}
+      <div className={styles.topNav}>
+        <Link href="/" className={styles.navButton}>
+          ← 返回首頁
+        </Link>
+        <Link href="/jingxuan" className={styles.navButton}>
+          前往精選 →
+        </Link>
       </div>
 
-      {/* 下方縮圖列表 */}
-      <div>
-        <h2
-          style={{
-            textAlign: 'center',
-            marginBottom: '30px',
-            color: '#374151',
-          }}
-        >
-          全部原創作品
-        </h2>
-
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center', // 想置中就保留
-            gap: '20px', // 改成 0（想要無縫貼合）
-            padding: '0 10px',
-            flexWrap: 'nowrap', // ← 關鍵：禁止換行
-            width: '100%', // 或改成 'fit-content' / 'auto'
-            maxWidth: '900px', // 可自行調整最大寬度
-          }}
-        >
-          {originalVideos.map((video) => (
-            <div
-              key={video.id}
-              onClick={() => setCurrentVideo(video)}
-              style={{
-                cursor: 'pointer',
-                borderRadius: '12px',
-                overflow: 'hidden',
-                boxShadow:
-                  currentVideo.id === video.id
-                    ? '0 0 0 3px #0022ff'
-                    : '0 4px 12px rgba(63, 68, 32, 0.1)',
-                transition: 'all 0.3s ease',
-                width: '280px',
-                maxWidth: '280px',
-                flex: '0 0 280px',
-              }}
-            >
-              {/* 正方形縮圖 */}
+      {/* ==================== 電腦版 ==================== */}
+      <div className={styles.desktopOnly}>
+        {/* 正式作品區 */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>作品</h2>
+          <div className={styles.thumbnailGrid}>
+            {originalVideos.map((video) => (
               <div
-                style={{
-                  position: 'relative',
-                  width: '100%',
-                  paddingTop: '100%',
-                  overflow: 'hidden',
-                }}
+                key={video.id}
+                className={styles.thumbnailCard}
+                onClick={() =>
+                  openModal({
+                    title: video.title,
+                    videoSrc: video.videoSrc,
+                    thumbnail: video.thumbnail,
+                  })
+                }
               >
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
+                <div
+                  className={styles.thumbnailImage}
+                  style={{ backgroundImage: `url(${video.thumbnail})` }}
                 />
+                <div className={styles.thumbnailTitle}>{video.title}</div>
               </div>
+            ))}
+          </div>
+        </section>
 
-              {/* 標題 */}
+        {/* 創作實驗區 */}
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>實驗</h2>
+          <div className={styles.thumbnailGrid}>
+            {labExperiments.map((exp) => (
               <div
-                style={{
-                  padding: '10px',
-                  backgroundColor: 'white',
-                  textAlign: 'center',
-                }}
+                key={exp.id}
+                className={styles.thumbnailCard}
+                onClick={() =>
+                  openModal({
+                    title: exp.title,
+                    videoSrc: exp.videoSrc,
+                    thumbnail: exp.thumbnail,
+                  })
+                }
               >
-                <p
-                  style={{
-                    margin: 0,
-                    fontWeight: '600',
-                    color: currentVideo.id === video.id ? '#001eff' : '#001eff',
-                    fontSize: '18px',
-                  }}
-                >
-                  {video.title}
-                </p>
+                <div
+                  className={styles.thumbnailImage}
+                  style={{ backgroundImage: `url(${exp.thumbnail})` }}
+                />
+                <div className={styles.thumbnailTitle}>{exp.title}</div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </section>
       </div>
+
+      {/* ==================== 手機版：3 個正方形播放器 ==================== */}
+      <div className={styles.mobileOnly}>
+        <h2 className={styles.sectionTitle}>原創視頻</h2>
+
+        {allItems.map((item, index) => (
+          <div key={index} className={styles.mobileFeedItem}>
+            <div className={styles.mobileFeedTitle}>{item.title}</div>
+            <div className={styles.mobilePlayerWrapper}>
+              <video
+                ref={(el) => {
+                  videoRefs.current[index] = el;
+                }}
+                controls
+                playsInline
+                className={styles.mobileVideoPlayer}
+                poster={item.thumbnail}
+                onPlay={() => handleMobilePlay(index)}
+              >
+                <source src={item.videoSrc} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ==================== Modal（電腦版使用） ==================== */}
+      {playItem && (
+        <div className={styles.modalOverlay} onClick={closeModal}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className={styles.closeButton} onClick={closeModal}>
+              ×
+            </button>
+
+            <div className={styles.modalPlayer}>
+              <video
+                controls
+                autoPlay
+                className={styles.modalVideo}
+                poster={playItem.thumbnail}
+                key={playItem.videoSrc}
+              >
+                <source src={playItem.videoSrc} type="video/mp4" />
+              </video>
+            </div>
+
+            <h2 className={styles.modalTitle}>{playItem.title}</h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

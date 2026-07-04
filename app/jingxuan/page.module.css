@@ -1,15 +1,42 @@
-/* ==================== 基礎樣式 ==================== */
+/* ==================== 頂部導航按鈕 ==================== */
+.topNav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+.navButton {
+  padding: 0.6rem 1.2rem;
+  background-color: #1f2937;
+  color: #f5c36a;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  flex: 1;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #334155;
+  color: #f8f1d8;
+}
+
+/* ==================== 主要內容區（已修正置中） ==================== */
 .mainContent {
   padding: 1rem 1rem 2rem;
   max-width: 1100px;
-  margin-left: 340px;
+  margin: 0 auto; /* 改成置中 */
   background-color: #0b1026;
 }
 
-/* ==================== 內容區域 Grid ==================== */
+/* 以下保留你原本的內容區、卡片、手機版樣式即可 */
 .contentArea {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 電腦版固定 3 欄 */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.4rem;
 }
 

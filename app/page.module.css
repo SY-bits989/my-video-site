@@ -1,145 +1,146 @@
-/* ==================== 電腦版（新設計：舞台式 + 響應式留白） ==================== */
-.mainContent {
-  padding: 2rem 3rem;
-  max-width: 1280px;
-  margin-left: 340px;
-  min-height: 100vh;
+.container {
   background-color: #0b1026;
+  min-height: 100vh;
 }
 
-.desktopView {
-  display: flex;
-  justify-content: center;
-  padding-top: 1.5rem;
-}
-
-/* 整個「播放器 + 標題」的舞台區塊 */
-.playerBlock {
+/* ==================== Hero ==================== */
+.hero {
   width: 100%;
-  max-width: clamp(680px, 72%, 860px); /* 響應式寬度，左右留白比例舒服 */
-  background-color: #111827; /* 舞台背景色，比主背景再深一點 */
-  border-radius: 20px;
-  padding: 48px 52px 42px; /* 左右內距就是舞台留白（約50px） */
-  box-shadow:
-    0 30px 60px -15px rgb(0 0 0 / 0.55),
-    0 0 0 1px #1f2937;
-  border: 1px solid #1f2937;
-}
-
-/* 正方形播放器 */
-.playerWrapper {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  max-height: 780px;
-  background: #0a0f1e;
-  border-radius: 14px;
+  height: 70vh;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.5);
-  border: 1px solid #1f2937;
 }
 
-.videoPlayer {
+.heroImage {
   width: 100%;
   height: 100%;
-  display: block;
-  object-fit: cover;
+  background-image: url('/hero-night-sky.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* 全屏時保持 contain（已驗證有效） */
-.videoPlayer:fullscreen,
-.videoPlayer:-webkit-full-screen {
-  object-fit: contain !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  background-color: #000;
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 16, 38, 0.25) 0%,
+    rgba(11, 16, 38, 0.55) 50%,
+    rgba(11, 16, 38, 0.75) 100%
+  );
 }
 
-/* 標題放在播放器下方 */
-.mainTitle {
-  margin-top: 1.6rem;
-  margin-bottom: 0;
-  font-size: 1.65rem;
+.heroContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-size: 4.8rem;
   font-weight: 700;
   color: #f8f1d8;
-  text-align: center;
-  letter-spacing: 0.02em;
-  line-height: 1.35;
+  letter-spacing: 0.12em;
 }
 
-/* 大螢幕再微調 */
-@media (min-width: 1400px) {
-  .playerBlock {
-    max-width: 880px;
-    padding: 52px 58px 46px;
-  }
+/* ==================== 探索區塊 ==================== */
+.exploreSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
 
-/* ==================== 手機版（完全不動） ==================== */
-.mobileFeed {
-  display: none;
+.exploreGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
 }
 
-@media (max-width: 1024px) {
-  .mainContent {
-    margin-left: 0;
-    padding: 1.2rem 0.8rem;
-    background-color: #0b1026;
-  }
-
-  .desktopView {
-    display: none;
-  }
-
-  .mobileFeed {
-    display: flex;
-    flex-direction: column;
-    gap: 2.8rem;
-  }
-}
-
-/* 手機版其餘樣式（feedTitle、videoContainer、feedVideo 等）保持原本不變 */
-.feedItem {
-  background-color: transparent;
-}
-
-.feedTitle {
-  text-align: center;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #f8f1d8;
-  margin-bottom: 0.8rem;
-  padding: 0 1rem;
-}
-
-.videoContainer {
+.exploreCard {
   position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 16px;
-  background: #111827;
-  border: 1px solid #1f2937;
-}
-
-.feedVideo {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 16px;
   display: block;
-  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 10px 30px -15px rgb(0 0 0 / 0.4);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* hover 效果 */
-.playerBlock:hover {
+.exploreCard:hover {
+  transform: translateY(-8px);
   box-shadow:
-    0 35px 70px -15px rgb(0 0 0 / 0.6),
-    0 0 0 1px #334155;
-  transition: box-shadow 0.3s ease;
+    0 25px 50px -12px rgb(0 0 0 / 0.4),
+    0 0 25px rgba(245, 195, 106, 0.25),
+    0 0 50px rgba(245, 195, 106, 0.15);
+  transition: all 0.4s ease;
 }
 
-.feedItem:hover .feedTitle {
-  color: #f5c36a;
-  transition: color 0.2s ease;
+/* 星光效果核心 */
+.exploreCard::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: radial-gradient(
+    circle at center,
+    rgba(245, 195, 106, 0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.exploreCard:hover::after {
+  opacity: 1;
+  animation: starlight-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes starlight-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+.exploreImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.exploreOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.8rem;
+  background: linear-gradient(
+    to top,
+    rgba(11, 16, 38, 0.85) 0%,
+    rgba(11, 16, 38, 0.4) 60%,
+    transparent 100%
+  );
+}
+
+.exploreTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8f1d8;
+  margin: 0;
+  letter-spacing: 0.05em;
 }

@@ -1,4 +1,5 @@
 // app/jingxuan/page.tsx
+import Link from 'next/link';
 import { videoData, type VideoItem } from '../lib/data';
 import styles from './page.module.css';
 
@@ -13,77 +14,88 @@ const subCategories = [
 
 export default function JingxuanPage() {
   return (
-    <div className={styles.mainContent}>
-      {subCategories.map((cat) => {
-        const items = videoData[cat.key] as VideoItem[];
+    <div>
+      {/* 頂部導航按鈕 */}
+      <div className={styles.topNav}>
+        <Link href="/" className={styles.navButton}>
+          ← 返回首頁
+        </Link>
+        <Link href="/original" className={styles.navButton}>
+          前往原創視頻 →
+        </Link>
+      </div>
 
-        if (items.length === 0) return null;
+      <div className={styles.mainContent}>
+        {subCategories.map((cat) => {
+          const items = videoData[cat.key] as VideoItem[];
 
-        return (
-          <div key={cat.id} id={cat.id} style={{ marginBottom: '3rem' }}>
-            <h2
-              style={{
-                color: '#f5c36a',
-                fontSize: '1.5rem',
-                marginBottom: '1rem',
-                paddingLeft: '0.5rem',
-              }}
-            >
-              {cat.name}
-            </h2>
+          if (items.length === 0) return null;
 
-            <div className={styles.contentArea}>
-              {items.map((item, index) => {
-                // ==================== Type Narrowing（重點修正） ====================
-                if (item.type === 'embed') {
-                  // 這裡 TypeScript 知道 item 是 EmbedVideoItem
-                  return (
-                    <div
-                      key={index}
-                      className={`${styles.itemCard} ${styles.embedItem}`}
-                    >
-                      <div className={styles.titleWrapper}>
-                        <span className={styles.itemLink}>{item.title}</span>
-                      </div>
+          return (
+            <div key={cat.id} id={cat.id} style={{ marginBottom: '3rem' }}>
+              <h2
+                style={{
+                  color: '#f5c36a',
+                  fontSize: '1.5rem',
+                  marginBottom: '1rem',
+                  paddingLeft: '0.5rem',
+                }}
+              >
+                {cat.name}
+              </h2>
 
+              <div className={styles.contentArea}>
+                {items.map((item, index) => {
+                  if (item.type === 'embed') {
+                    return (
                       <div
-                        className={styles.embedContainer}
-                        dangerouslySetInnerHTML={{ __html: item.embedCode }}
-                      />
-                    </div>
-                  );
-                } else {
-                  // 這裡 TypeScript 知道 item 是 LinkVideoItem
-                  return (
-                    <div key={index} className={styles.itemCard}>
-                      {item.category && (
-                        <div className={styles.categoryTag}>
-                          {item.category}
+                        key={index}
+                        className={`${styles.itemCard} ${styles.embedItem}`}
+                      >
+                        <div className={styles.titleWrapper}>
+                          <span className={styles.itemLink}>{item.title}</span>
                         </div>
-                      )}
 
-                      <div className={styles.titleWrapper}>
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.itemLink}
-                        >
-                          {item.title}
-                        </a>
+                        <div
+                          className={styles.embedContainer}
+                          dangerouslySetInnerHTML={{ __html: item.embedCode }}
+                        />
                       </div>
+                    );
+                  } else {
+                    return (
+                      <div key={index} className={styles.itemCard}>
+                        {item.category && (
+                          <div className={styles.categoryTag}>
+                            {item.category}
+                          </div>
+                        )}
 
-                      {item.author && (
-                        <div className={styles.authorCredit}>{item.author}</div>
-                      )}
-                    </div>
-                  );
-                }
-              })}
+                        <div className={styles.titleWrapper}>
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.itemLink}
+                          >
+                            {item.title}
+                          </a>
+                        </div>
+
+                        {item.author && (
+                          <div className={styles.authorCredit}>
+                            {item.author}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+                })}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
