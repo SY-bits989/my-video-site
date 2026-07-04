@@ -268,8 +268,8 @@ export const originalVideos: OriginalVideo[] = [
   {
     id: 3,
     title: '7.4',
-    videoSrc: '/videos/7.4.mp4',
-    thumbnail: '/videos/7.4.jpg',
+    videoSrc: '/videos/7-4.mp4',
+    thumbnail: '/videos/7-4.webp',
   },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
