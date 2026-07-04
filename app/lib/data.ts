@@ -265,6 +265,12 @@ export const originalVideos: OriginalVideo[] = [
     videoSrc: '/videos/xxmx.mp4',
     thumbnail: '/videos/xxmx.jpg',
   },
+  {
+    id: 3,
+    title: '7.4',
+    videoSrc: '/videos/7.4.mp4',
+    thumbnail: '/videos/7.4.jpg',
+  },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
 export type LabExperiment = {
