@@ -9,7 +9,7 @@ const subCategories = [
   { id: 'qiangu', name: '千古文化', key: 'culture' as const },
   { id: 'miaoyin', name: '妙音', key: 'audio' as const },
   { id: 'xuan', name: '玄', key: 'xuan' as const },
-  { id: 'meishi', name: '美味', key: 'others' as const },
+  { id: 'meishi', name: '養生', key: 'others' as const },
 ];
 
 export default function JingxuanPage() {
