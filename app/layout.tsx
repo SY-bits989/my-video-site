@@ -4,8 +4,8 @@ import './globals.css';
 import ClientLayout from './components/ClientLayout';
 
 export const metadata: Metadata = {
-  title: '美員',
-  description: '美員',
+  title: '美圓',
+  description: '美圓',
 };
 
 export default function RootLayout({
