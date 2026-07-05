@@ -21,7 +21,7 @@ export default function JingxuanPage() {
           ← 返回首頁
         </Link>
         <Link href="/original" className={styles.navButton}>
-          前往原創視頻 →
+          前往善圓 →
         </Link>
       </div>
 

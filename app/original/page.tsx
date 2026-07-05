@@ -54,7 +54,7 @@ export default function OriginalPage() {
           ← 返回首頁
         </Link>
         <Link href="/jingxuan" className={styles.navButton}>
-          前往精選 →
+          前往推薦 →
         </Link>
       </div>
 
@@ -62,7 +62,7 @@ export default function OriginalPage() {
       <div className={styles.desktopOnly}>
         {/* 正式作品區 */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>作品</h2>
+          <h2 className={styles.sectionTitle}>善圓</h2>
           <div className={styles.thumbnailGrid}>
             {originalVideos.map((video) => (
               <div
@@ -115,7 +115,7 @@ export default function OriginalPage() {
 
       {/* ==================== 手機版：3 個正方形播放器 ==================== */}
       <div className={styles.mobileOnly}>
-        <h2 className={styles.sectionTitle}>原創視頻</h2>
+        <h2 className={styles.sectionTitle}>善圓</h2>
 
         {allItems.map((item, index) => (
           <div key={index} className={styles.mobileFeedItem}>

@@ -244,7 +244,7 @@ export const videoData = {
   original: [] as const satisfies VideoItem[],
 } as const;
 
-// ==================== 善緣原創視頻（保持不動） ====================
+// ==================== 原創視頻（保持不動） ====================
 export type OriginalVideo = {
   id: number;
   title: string;

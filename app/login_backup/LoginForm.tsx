@@ -71,7 +71,7 @@ export default function LoginForm({
           <span style={{ fontSize: '36px' }}>🎞️</span>
         </div>
         <h2 style={{ fontSize: '28px', fontWeight: '600', color: '#111' }}>
-          登入善緣原創
+          登入
         </h2>
         <p style={{ color: '#666', marginTop: '8px', fontSize: '17px' }}>
           原創內容需登入後查看
