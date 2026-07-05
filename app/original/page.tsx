@@ -88,7 +88,7 @@ export default function OriginalPage() {
 
         {/* 創作實驗區 */}
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>實驗</h2>
+          <h2 className={styles.sectionTitle}></h2>
           <div className={styles.thumbnailGrid}>
             {labExperiments.map((exp) => (
               <div

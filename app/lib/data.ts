@@ -280,11 +280,4 @@ export type LabExperiment = {
   videoSrc: string;
 };
 
-export const labExperiments: LabExperiment[] = [
-  {
-    id: 'exp-1',
-    title: 'Grok 影像創作實驗 #01',
-    thumbnail: '/videos/lab-exp-1.jpg',
-    videoSrc: '/videos/lab-exp-1.mp4',
-  },
-];
+export const labExperiments: LabExperiment[] = [];
