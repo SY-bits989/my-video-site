@@ -54,7 +54,7 @@ export default function OriginalPage() {
           ← 返回首頁
         </Link>
         <Link href="/jingxuan" className={styles.navButton}>
-          前往推薦 →
+          前往少壯 →
         </Link>
       </div>
 

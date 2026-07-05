@@ -29,14 +29,14 @@ export default function HomePage() {
             </div>
           </Link>
 
-          {/* 推薦 */}
+          {/* 少壯 */}
           <Link href="/jingxuan" className={styles.exploreCard}>
             <div
               className={styles.exploreImage}
               style={{ backgroundImage: `url('/jingxuan-preview.jpg')` }}
             />
             <div className={styles.exploreOverlay}>
-              <h2 className={styles.exploreTitle}>推薦</h2>
+              <h2 className={styles.exploreTitle}>少壯</h2>
             </div>
           </Link>
         </div>
