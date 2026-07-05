@@ -10,7 +10,7 @@ export default function HomePage() {
         <div className={styles.heroImage}>
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>美慧</h1>
+            <h1 className={styles.heroTitle}>信仰大法</h1>
           </div>
         </div>
       </section>
