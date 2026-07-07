@@ -80,6 +80,20 @@ export const videoData = {
     },
     {
       type: 'link',
+      title: '第十屆新唐人全世界中國古典舞大賽 青年男子組金獎：包正宇',
+      url: 'https://www.shenyuncreations.com/s/t/njHw2',
+      author: '「神韻作品」',
+      category: '',
+    },
+    {
+      type: 'link',
+      title: '第十屆新唐人全世界中國古典舞大賽 少年男子組金獎：包明宇',
+      url: 'https://www.shenyuncreations.com/s/t/2goSg3',
+      author: '「神韻作品」',
+      category: '',
+    },
+    {
+      type: 'link',
       title: '國會議員讚神韻指路明燈 頒褒獎賀重返多倫多',
       url: 'https://www.ganjingworld.com/s/8MKq4kw4qQ',
       author: '「新唐人精選新聞」',
