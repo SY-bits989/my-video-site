@@ -279,21 +279,9 @@ export type OriginalVideo = {
 export const originalVideos: OriginalVideo[] = [
   {
     id: 1,
-    title: '三退',
-    videoSrc: '/videos/st.mp4',
-    thumbnail: '/videos/st.jpg',
-  },
-  {
-    id: 2,
-    title: '許仙夢醒',
-    videoSrc: '/videos/xxmx.mp4',
-    thumbnail: '/videos/xxmx.jpg',
-  },
-  {
-    id: 3,
-    title: '7.4',
-    videoSrc: '/videos/7-4.mp4',
-    thumbnail: '/videos/7-4.webp',
+    title: '',
+    videoSrc: '',
+    thumbnail: '',
   },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
