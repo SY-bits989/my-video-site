@@ -195,6 +195,20 @@ export const videoData = {
       author: '「凈泉音樂原創 JQ Music」',
       category: '',
     },
+    {
+      type: 'link',
+      title: '如何扭轉命運？人生覺醒靠10種高維能力(圖)',
+      url: 'http://kzg.io/b54cYX',
+      author: '「看中國」',
+      category: '',
+    },
+    {
+      type: 'link',
+      title: '擔心三高少吃肉真的對嗎？小心肌少症！(圖)',
+      url: 'http://kzg.io/b54cYd',
+      author: '「看中國」',
+      category: '',
+    },
   ] as const satisfies LinkVideoItem[],
 
   audio: [
@@ -279,9 +293,9 @@ export type OriginalVideo = {
 export const originalVideos: OriginalVideo[] = [
   {
     id: 1,
-    title: '',
-    videoSrc: '',
-    thumbnail: '',
+    title: '1',
+    videoSrc: '/videos/1.mp4',
+    thumbnail: '/videos/1.webp',
   },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
