@@ -293,7 +293,7 @@ export type OriginalVideo = {
 export const originalVideos: OriginalVideo[] = [
   {
     id: 1,
-    title: '1',
+    title: '大法好1',
     videoSrc: '/videos/1.mp4',
     thumbnail: '/videos/1.webp',
   },
