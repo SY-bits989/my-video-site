@@ -209,6 +209,13 @@ export const videoData = {
       author: '「看中國」',
       category: '',
     },
+    {
+      type: 'link',
+      title: '巴菲特：人生其實只需要做好6件事(圖)',
+      url: 'http://kzg.io/b54ccX',
+      author: '「看中國」',
+      category: '',
+    },
   ] as const satisfies LinkVideoItem[],
 
   audio: [
