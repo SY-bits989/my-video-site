@@ -300,9 +300,9 @@ export type OriginalVideo = {
 export const originalVideos: OriginalVideo[] = [
   {
     id: 1,
-    title: '7.20',
-    videoSrc: '/videos/7201.mp4',
-    thumbnail: '/videos/7201.webp',
+    title: '',
+    videoSrc: '',
+    thumbnail: '',
   },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
