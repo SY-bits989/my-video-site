@@ -257,6 +257,20 @@ export const videoData = {
       author: '「玄乎神乎」',
       category: '',
     },
+    {
+      type: 'link',
+      title: '驚人揭秘: 一場精心設計的陷阱! 《外星人訪談錄》(上)',
+      url: 'https://www.ganjingworld.com/s/Qp0OKENM49',
+      author: '「玄乎神乎」',
+      category: '',
+    },
+    {
+      type: 'link',
+      title: '外星人警告: 死亡後不要做這件事! UFO墜毀真相...《外星人訪談錄》下',
+      url: 'https://www.ganjingworld.com/s/3RNWAEGJ1M',
+      author: '「玄乎神乎」',
+      category: '',
+    },
   ] as const satisfies LinkVideoItem[],
 
   others: [
