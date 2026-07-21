@@ -333,7 +333,7 @@ export const originalVideos: OriginalVideo[] = [
     id: 1,
     title: '7.20',
     videoSrc: '/videos/720.mp4',
-    videoSrcWebm: '/videos/720.webm',
+    videoSrcWebm: '/videos/720key.webm',
     thumbnail: '/videos/720.webp',
   },
 ];
