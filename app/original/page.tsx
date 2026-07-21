@@ -171,10 +171,7 @@ export default function OriginalPage() {
                 poster={playItem.thumbnail}
                 key={playItem.videoSrc}
               >
-                {playItem.videoSrcWebm && (
-                  <source src={playItem.videoSrcWebm} type="video/webm" />
-                )}
-                <source src={playItem.videoSrc} type="video/mp4" />
+                <source src={playItem.videoSrcWebm!} type="video/webm" />
               </video>
             </div>
 
