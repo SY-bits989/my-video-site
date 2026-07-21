@@ -93,7 +93,7 @@
   background-color: #111827;
   border-radius: 16px;
   width: 100%;
-  max-width: 860px;
+  max-height: 100vh;
   position: relative;
   overflow: hidden;
 }
@@ -116,7 +116,9 @@
 .modalPlayer {
   width: 100%;
   aspect-ratio: 1 / 1;
+  max-height: calc(100vh - 80px);
   background: #000;
+  flex-shrink: 1;
 }
 
 .modalVideo {

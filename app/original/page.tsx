@@ -153,6 +153,8 @@ export default function OriginalPage() {
               <video
                 controls
                 autoPlay
+                loop
+                preload="auto"
                 className={styles.modalVideo}
                 poster={playItem.thumbnail}
                 key={playItem.videoSrc}

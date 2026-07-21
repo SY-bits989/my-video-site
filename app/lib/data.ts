@@ -277,6 +277,14 @@ export const videoData = {
     {
       type: 'link',
       title:
+        '喜歡吃大蒜 竟然會導致脹氣？ 你以為肚子脹，只是吃太多？其實可能是食物在「製造氣體」！😳很多人愛吃的蔥、大蒜、洋蔥，雖然是料理靈魂，但它們同時也是高產氣食物。有些人吃完容易腹脹、放屁變多、腸胃不舒服，卻一直以為只是「吃太飽」。 ',
+      url: 'https://www.ganjingworld.com/s/AMK4rzKpwa',
+      author: '「健康1+1」',
+      category: '',
+    },
+    {
+      type: 'link',
+      title:
         '#助眠 #失眠 #作息 #藍光 #褪黑激素 #入睡 最傷身的 3 大睡前習慣【健康1+1】',
       url: 'https://www.ganjingworld.com/s/o7G7VxnJKM',
       author: '「健康1+1」',
