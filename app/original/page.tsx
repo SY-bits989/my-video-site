@@ -8,6 +8,7 @@ import styles from './page.module.css';
 interface PlayItem {
   title: string;
   videoSrc: string;
+  videoSrcWebm?: string;
   thumbnail: string;
 }
 
@@ -79,6 +80,7 @@ export default function OriginalPage() {
                   openModal({
                     title: video.title,
                     videoSrc: video.videoSrc,
+                    videoSrcWebm: video.videoSrcWebm,
                     thumbnail: video.thumbnail,
                   })
                 }
@@ -106,6 +108,7 @@ export default function OriginalPage() {
                   openModal({
                     title: exp.title,
                     videoSrc: exp.videoSrc,
+                    videoSrcWebm: exp.videoSrcWebm,
                     thumbnail: exp.thumbnail,
                   })
                 }
@@ -168,6 +171,9 @@ export default function OriginalPage() {
                 poster={playItem.thumbnail}
                 key={playItem.videoSrc}
               >
+                {playItem.videoSrcWebm && (
+                  <source src={playItem.videoSrcWebm} type="video/webm" />
+                )}
                 <source src={playItem.videoSrc} type="video/mp4" />
               </video>
             </div>

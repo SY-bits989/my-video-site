@@ -324,6 +324,7 @@ export type OriginalVideo = {
   id: number;
   title: string;
   videoSrc: string;
+  videoSrcWebm?: string;
   thumbnail: string;
 };
 
@@ -332,6 +333,7 @@ export const originalVideos: OriginalVideo[] = [
     id: 1,
     title: '7.20',
     videoSrc: '/videos/720.mp4',
+    videoSrcWebm: '/videos/720.webm',
     thumbnail: '/videos/720.webp',
   },
 ];
@@ -341,6 +343,7 @@ export type LabExperiment = {
   title: string;
   thumbnail: string;
   videoSrc: string;
+  videoSrcWebm?: string;
 };
 
 export const labExperiments: LabExperiment[] = [];
