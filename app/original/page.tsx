@@ -27,6 +27,13 @@ export default function OriginalPage() {
       thumbnail: exp.thumbnail,
     })),
   ];
+  // ========== 加在這裡 ==========
+  const preloadVideo = (src: string) => {
+    const video = document.createElement('video');
+    video.preload = 'auto';
+    video.src = src;
+  };
+  // ==============================
 
   // 電腦版開啟 Modal
   const openModal = (item: PlayItem) => {
@@ -75,6 +82,7 @@ export default function OriginalPage() {
                     thumbnail: video.thumbnail,
                   })
                 }
+                onMouseEnter={() => preloadVideo(video.videoSrc)}
               >
                 <div
                   className={styles.thumbnailImage}
@@ -101,6 +109,7 @@ export default function OriginalPage() {
                     thumbnail: exp.thumbnail,
                   })
                 }
+                onMouseEnter={() => preloadVideo(exp.videoSrc)}
               >
                 <div
                   className={styles.thumbnailImage}
