@@ -14,8 +14,8 @@ const subCategories = [
 
 export default function JingxuanPage() {
   return (
-    <div>
-      {/* 頂部導航按鈕 */}
+    <div className={styles.page}>
+      {/* 頂部導航 */}
       <div className={styles.topNav}>
         <Link href="/" className={styles.navButton}>
           ← 返回首頁
@@ -29,70 +29,51 @@ export default function JingxuanPage() {
         {subCategories.map((cat) => {
           const items = videoData[cat.key] as VideoItem[];
 
-          if (items.length === 0) return null;
+          if (!items || items.length === 0) return null;
 
           return (
-            <div key={cat.id} id={cat.id} style={{ marginBottom: '3rem' }}>
-              <h2
-                style={{
-                  color: '#f5c36a',
-                  fontSize: '1.5rem',
-                  marginBottom: '1rem',
-                  paddingLeft: '0.5rem',
-                }}
-              >
-                {cat.name}
-              </h2>
+            <section
+              key={cat.id}
+              id={cat.id}
+              className={styles.categorySection}
+            >
+              <h2 className={styles.categoryTitle}>{cat.name}</h2>
 
-              <div className={styles.contentArea}>
-                {items.map((item, index) => {
-                  if (item.type === 'embed') {
-                    return (
+              <div className={styles.list}>
+                {items.map((item, index) => (
+                  <div key={index} className={styles.listItem}>
+                    {/* 標題 */}
+                    <div className={styles.titleRow}>
+                      {item.type === 'embed' ? (
+                        <span className={styles.itemTitle}>{item.title}</span>
+                      ) : (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.itemTitle}
+                        >
+                          {item.title}
+                        </a>
+                      )}
+                    </div>
+
+                    {/* 來源（很淡）— 只在 type === 'link' 時顯示 */}
+                    {item.type === 'link' && item.author && (
+                      <div className={styles.author}>{item.author}</div>
+                    )}
+
+                    {/* 嵌入影片 */}
+                    {item.type === 'embed' && (
                       <div
-                        key={index}
-                        className={`${styles.itemCard} ${styles.embedItem}`}
-                      >
-                        <div className={styles.titleWrapper}>
-                          <span className={styles.itemLink}>{item.title}</span>
-                        </div>
-
-                        <div
-                          className={styles.embedContainer}
-                          dangerouslySetInnerHTML={{ __html: item.embedCode }}
-                        />
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div key={index} className={styles.itemCard}>
-                        {item.category && (
-                          <div className={styles.categoryTag}>
-                            {item.category}
-                          </div>
-                        )}
-
-                        <div className={styles.titleWrapper}>
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.itemLink}
-                          >
-                            {item.title}
-                          </a>
-                        </div>
-
-                        {item.author && (
-                          <div className={styles.authorCredit}>
-                            {item.author}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  }
-                })}
+                        className={styles.embedContainer}
+                        dangerouslySetInnerHTML={{ __html: item.embedCode }}
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
-            </div>
+            </section>
           );
         })}
       </div>

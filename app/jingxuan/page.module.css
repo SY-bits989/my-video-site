@@ -1,11 +1,17 @@
-/* ==================== 頂部導航按鈕 ==================== */
+/* ==================== 基礎 ==================== */
+.page {
+  background-color: #0b1026;
+  min-height: 100vh;
+}
+
+/* ==================== 頂部導航 ==================== */
 .topNav {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  max-width: 1100px;
-  margin: 0 auto 2rem;
-  padding: 0 1rem;
+  max-width: 1100px; /* 對齊 original 頁面寬度 */
+  margin: 0 auto 2.5rem;
+  padding: 1.5rem 1rem 0;
 }
 
 .navButton {
@@ -17,7 +23,9 @@
   font-size: 0.95rem;
   flex: 1;
   text-align: center;
-  transition: all 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .navButton:hover {
@@ -25,101 +33,74 @@
   color: #f8f1d8;
 }
 
-/* ==================== 主要內容區（已修正置中） ==================== */
+/* ==================== 主要內容（電腦版放大） ==================== */
 .mainContent {
-  padding: 1rem 1rem 2rem;
-  max-width: 1100px;
-  margin: 0 auto; /* 改成置中 */
-  background-color: #0b1026;
+  max-width: 1100px; /* 對齊 original 頁面寬度 */
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
 }
 
-/* 以下保留你原本的內容區、卡片、手機版樣式即可 */
-.contentArea {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.4rem;
+/* ==================== 分類區塊 ==================== */
+.categorySection {
+  margin-bottom: 4rem;
 }
 
-/* ==================== 卡片樣式（統一） ==================== */
-.itemCard {
-  aspect-ratio: 1 / 1;
-  background-color: #111827;
-  border-radius: 18px;
-  padding: 1.1rem 1.2rem;
-  border: 1px solid #1f2937;
+.categoryTitle {
+  color: #f5c36a;
+  font-size: 1.7rem; /* 放大 */
+  font-weight: 600;
+  margin: 0 0 1.6rem 0;
+  padding: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ==================== 列表 ==================== */
+.list {
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.itemCard:hover {
-  transform: scale(1.02);
-  box-shadow:
-    0 20px 25px -5px rgb(0 0 0 / 0.4),
-    0 0 0 1px #334155;
-  border-color: #475569;
+/* 每個項目：垂直掃描優先，間距完全一致 */
+.listItem {
+  padding: 1.25rem 0; /* 電腦版稍微放寬間距 */
+  /* 不加邊框、不加背景、不加陰影 */
 }
 
-.categoryTag {
-  align-self: flex-start;
-  background-color: #1f2937;
-  color: #f5c36a;
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.2rem 0.55rem;
-  border-radius: 6px;
-  margin-bottom: 0.6rem;
+/* 標題（所有標題字級、行高、間距完全一致） */
+.titleRow {
+  margin: 0;
+  padding: 0;
 }
 
-.titleWrapper {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0.4rem 0;
-}
-
-.itemLink {
-  font-size: 1.22rem;
-  font-weight: 700;
+.itemTitle {
+  display: block;
+  font-size: 1.4rem; /* 放大 */
+  font-weight: 600;
+  line-height: 1.5;
   color: #f8f1d8;
   text-decoration: none;
+  /* 不限制行數，完整顯示標題 */
+}
+
+a.itemTitle:hover {
+  color: #f5c36a;
+}
+
+/* 來源字小且很淡 */
+.author {
+  margin-top: 0.35rem;
+  font-size: 0.95rem; /* 稍微放大但仍保持淡 */
+  color: #64748b;
   line-height: 1.35;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  font-weight: 400;
 }
 
-.itemLink:hover {
-  color: #f5c36a;
-  text-decoration: underline;
-}
-
-.authorCredit {
-  font-size: 1rem;
-  color: #f5c36a;
-  text-align: right;
-  margin-top: 0.6rem;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-
-.authorCredit::before {
-  content: '—— ';
-  color: #94a3b8;
-}
-
-/* ==================== 嵌入視頻（電腦版佔整行） ==================== */
+/* ==================== 嵌入影片（電腦版放大） ==================== */
 .embedContainer {
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
-  border: 1px solid #1f2937;
   width: 100%;
 }
 
@@ -127,108 +108,52 @@
   width: 100% !important;
   height: auto !important;
   aspect-ratio: 16 / 9 !important;
-  max-height: 560px;
+  max-height: 620px; /* 放大 */
   display: block;
   border: none;
 }
 
-.embedItem {
-  aspect-ratio: auto;
-  grid-column: 1 / -1; /* 電腦版嵌入視頻佔整行 */
-  padding-bottom: 0;
-}
+/* ==================== 手機版優化（保持不變） ==================== */
+@media (max-width: 640px) {
+  .topNav {
+    padding: 1rem 0.9rem 0;
+    margin-bottom: 2rem;
+  }
 
-.embedItem .embedContainer {
-  margin: 0.75rem -1.2rem 0;
-  width: calc(100% + 2.4rem);
-  border: none;
-  border-radius: 0 0 18px 18px;
-  overflow: hidden;
-  background: #000;
-}
-
-/* ==================== 手機版優化（加強一致性） ==================== */
-@media (max-width: 1024px) {
   .mainContent {
-    margin-left: 0;
-    padding: 1rem 0.8rem 2rem;
-    background-color: #0b1026;
-    max-width: 100%;
+    padding: 0 1rem 3.5rem;
   }
 
-  .contentArea {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.9rem; /* 稍微縮小間距 */
+  .categorySection {
+    margin-bottom: 2.8rem;
   }
 
-  /* 統一所有卡片（包含天頂視頻） */
-  .itemCard {
-    aspect-ratio: 1 / 1;
-    padding: 0.7rem 0.8rem; /* 減少內距，讓卡片更緊湊 */
-    background-color: #111827;
-    border-radius: 16px;
-    border: 1px solid #1f2937;
+  .categoryTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1.15rem;
   }
 
-  .itemLink {
-    font-size: 0.92rem; /* 再縮小一點標題字體 */
-    line-height: 1.28;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+  /* 手機密度目標：一屏約 5–7 個標題 */
+  .listItem {
+    padding: 0.92rem 0;
   }
 
-  .titleWrapper {
-    padding: 0.2rem 0; /* 減少標題區域的上下空白 */
+  .itemTitle {
+    font-size: 1.08rem;
+    line-height: 1.42;
   }
 
-  .categoryTag {
-    font-size: 0.65rem;
-    padding: 0.1rem 0.35rem;
-    margin-bottom: 0.4rem;
+  .author {
+    margin-top: 0.22rem;
+    font-size: 0.78rem;
   }
 
-  .authorCredit {
-    font-size: 0.8rem;
-    margin-top: 0.4rem;
-    margin-bottom: 0.3rem;
-  }
-
-  /* ========== 新增這一段：修正嵌入視頻溢出 ========== */
-  .embedItem .embedContainer {
-    margin: 0.5rem -0.8rem 0; /* 改小負 margin，避免溢出 */
-    width: calc(100% + 1.6rem);
-    border-radius: 0 0 16px 16px; /* 配合手機版卡片圓角 */
+  .embedContainer {
+    margin-top: 0.75rem;
+    border-radius: 8px;
   }
 
   .embedContainer iframe {
-    max-height: 340px;
+    max-height: 280px;
   }
-
-  /* ========== 手機版嵌入視頻標題區強力壓縮 ========== */
-  .embedItem .titleWrapper {
-    flex: none !important; /* 關鍵：取消 flex: 1 的撐開效果 */
-    padding: 0.02rem 0 !important;
-    margin-bottom: 0.15rem !important;
-    min-height: auto !important;
-  }
-
-  .embedItem .itemLink {
-    font-size: 0.9rem !important;
-    line-height: 1.15 !important;
-    padding: 0.1rem 0 !important;
-  }
-  /* ========== 讓手機版嵌入視頻卡片不要強制正方形 ========== */
-  .embedItem {
-    aspect-ratio: auto !important; /* 關鍵：取消正方形限制 */
-    height: auto !important;
-    min-height: unset;
-  }
-}
-
-/* 空狀態 */
-.empty {
-  text-align: center;
-  color: #71717a;
-  font-size: 1.2rem;
-  padding: 4rem 1rem;
 }
