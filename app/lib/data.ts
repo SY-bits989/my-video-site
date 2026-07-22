@@ -216,6 +216,13 @@ export const videoData = {
       author: '「看中國」',
       category: '',
     },
+    {
+      type: 'link',
+      title: '富貴之人擁有哪些面相特徵？(圖)',
+      url: 'http://kzg.io/b54cl5',
+      author: '「看中國」',
+      category: '',
+    },
   ] as const satisfies LinkVideoItem[],
 
   audio: [
