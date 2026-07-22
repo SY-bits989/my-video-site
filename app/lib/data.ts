@@ -17,6 +17,15 @@ export type LinkVideoItem = {
 
 export type VideoItem = EmbedVideoItem | LinkVideoItem;
 
+// ==================== 精選分類（新增這裡） ====================
+export const jingxuanCategories = [
+  { id: 'tianding', name: '天頂視頻', key: 'top-video' as const },
+  { id: 'qiangu', name: '千古文化', key: 'culture' as const },
+  { id: 'miaoyin', name: '妙音', key: 'audio' as const },
+  { id: 'xuan', name: '玄', key: 'xuan' as const },
+  { id: 'yangsheng', name: '養生', key: 'others' as const },
+] as const;
+
 // ==================== Main Content Data ====================
 export const videoData = {
   zenith: [

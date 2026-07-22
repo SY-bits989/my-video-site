@@ -157,3 +157,301 @@ a.itemTitle:hover {
     max-height: 280px;
   }
 }
+/* ==================== Accordion ==================== */
+.accordionItem {
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #111827;
+  border: 1px solid rgba(245, 195, 106, 0.12);
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent; /* 去掉手機點擊藍框 */
+  touch-action: manipulation; /* 提升觸控反應 */
+}
+
+.accordionHeader:hover {
+  background-color: #1f2937;
+}
+
+.accordionHeaderOpen {
+  background-color: #1f2937;
+  border-bottom: 1px solid rgba(245, 195, 106, 0.15);
+}
+
+.accordionTitle {
+  color: #f5c36a;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.accordionIcon {
+  color: #f5c36a;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-left: 1rem;
+}
+
+.accordionContent {
+  padding: 0.5rem 1.4rem 1.4rem;
+}
+
+/* ==================== 手機版專用設計（重點） ==================== */
+@media (max-width: 640px) {
+  .accordionItem {
+    margin-bottom: 0.9rem;
+    border-radius: 12px;
+    border: 1px solid rgba(245, 195, 106, 0.18);
+    background-color: #0f172a;
+  }
+
+  /* 超大觸控區 + 大字 */
+  .accordionHeader {
+    padding: 1.35rem 1.25rem; /* 觸控高度約 52px+ */
+    min-height: 56px;
+  }
+
+  .accordionHeaderOpen {
+    background-color: #1e293b;
+    border-bottom: 1px solid rgba(245, 195, 106, 0.2);
+  }
+
+  .accordionTitle {
+    font-size: 1.32rem; /* 明顯加大 */
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1.35;
+  }
+
+  .accordionIcon {
+    font-size: 1.6rem;
+    opacity: 0.9;
+  }
+
+  /* 內容區更鬆，讓人看得舒服 */
+  .accordionContent {
+    padding: 0.6rem 1.25rem 1.5rem;
+  }
+
+  /* 手機列表項目也跟著放大、拉開間距 */
+  .listItem {
+    padding: 1.15rem 0 !important; /* 比原本更鬆 */
+  }
+
+  .itemTitle {
+    font-size: 1.18rem !important; /* 標題更大 */
+    line-height: 1.5 !important;
+    font-weight: 600;
+  }
+
+  .author {
+    margin-top: 0.3rem !important;
+    font-size: 0.85rem !important;
+    color: #94a3b8;
+  }
+
+  .embedContainer {
+    margin-top: 0.9rem !important;
+    border-radius: 10px;
+  }
+
+  .embedContainer iframe {
+    max-height: 240px !important;
+  }
+}
+/* ==================== 手機閱讀模式（Read Mode） ==================== */
+.mobileReadMode {
+  max-width: 100%;
+  padding: 0 1.1rem 4rem;
+}
+
+.mobileCategory {
+  margin-bottom: 3.2rem;
+}
+
+.mobileCategoryTitle {
+  color: #f5c36a;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 0 0 1.4rem 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(245, 195, 106, 0.25);
+}
+
+.mobileList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mobileItem {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.mobileItem:last-child {
+  border-bottom: none;
+}
+
+.mobileTitle {
+  display: block;
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: #f8f1d8;
+  text-decoration: none;
+}
+
+a.mobileTitle:hover,
+a.mobileTitle:active {
+  color: #f5c36a;
+}
+
+.mobileAuthor {
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.mobileEmbed {
+  margin-top: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+.mobileEmbed iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  max-height: 240px;
+  display: block;
+  border: none;
+}
+
+/* ==================== 入口頁標題 ==================== */
+.pageTitle {
+  color: #f5c36a;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 2rem 0;
+  letter-spacing: 0.03em;
+}
+
+/* ==================== 穹頂樂嵌入區 ==================== */
+.featuredEmbed {
+  margin-bottom: 3.5rem;
+}
+
+.featuredTitle {
+  color: #f5c36a;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 0 0 1.4rem 0;
+  letter-spacing: 0.02em;
+}
+
+/* ==================== 分類卡片（仿主頁 exploreCard） ==================== */
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.categoryCard {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 10px 30px -15px rgb(0 0 0 / 0.4);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 40px -12px rgb(0 0 0 / 0.45),
+    0 0 20px rgba(245, 195, 106, 0.22);
+}
+
+.categoryImage {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+}
+
+.categoryCard:hover .categoryImage {
+  transform: scale(1.04);
+}
+
+.categoryOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.6rem 1.4rem;
+  background: linear-gradient(
+    to top,
+    rgba(11, 16, 38, 0.88) 0%,
+    rgba(11, 16, 38, 0.45) 55%,
+    transparent 100%
+  );
+}
+
+.categoryCardTitle {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #f8f1d8;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+/* ==================== 手機版 ==================== */
+@media (max-width: 640px) {
+  .featuredEmbed {
+    margin-bottom: 2.8rem;
+  }
+
+  .featuredTitle {
+    font-size: 1.35rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .categoryGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .categoryCard {
+    border-radius: 12px;
+  }
+
+  .categoryOverlay {
+    padding: 1.3rem 1.2rem;
+  }
+
+  .categoryCardTitle {
+    font-size: 1.25rem;
+  }
+}

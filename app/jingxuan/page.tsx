@@ -1,16 +1,7 @@
 // app/jingxuan/page.tsx
 import Link from 'next/link';
-import { videoData, type VideoItem } from '../lib/data';
+import { jingxuanCategories } from '../lib/data';
 import styles from './page.module.css';
-
-const subCategories = [
-  { id: 'qiongding', name: '穹頂樂', key: 'zenith' as const },
-  { id: 'tianding', name: '天頂視頻', key: 'top-video' as const },
-  { id: 'qiangu', name: '千古文化', key: 'culture' as const },
-  { id: 'miaoyin', name: '妙音', key: 'audio' as const },
-  { id: 'xuan', name: '玄', key: 'xuan' as const },
-  { id: 'meishi', name: '養生', key: 'others' as const },
-];
 
 export default function JingxuanPage() {
   return (
@@ -26,56 +17,51 @@ export default function JingxuanPage() {
       </div>
 
       <div className={styles.mainContent}>
-        {subCategories.map((cat) => {
-          const items = videoData[cat.key] as VideoItem[];
+        {/* ===== 穹頂樂影片（直接嵌入） ===== */}
+        <section className={styles.featuredEmbed}>
+          <h2 className={styles.featuredTitle}>穹頂樂</h2>
+          <div className={styles.embedContainer}>
+            <iframe
+              width="100%"
+              height="500"
+              src="https://www.shenyuncreations.com/zh-TW/embed/_video_e606bd9dcdcc48739fa9ec4a71b090c5/Mongolian-Chopsticks---2023-Shen-Yun-Symphony-Orchestra?pid=p_BkqASChRSLaH"
+              title="2023 神韻交響樂 《筷子舞》"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </section>
 
-          if (!items || items.length === 0) return null;
+        {/* ===== 5 個分類卡片 ===== */}
+        <div className={styles.categoryGrid}>
+          {jingxuanCategories.map((cat) => {
+            // 對應 public 資料夾的圖片
+            const imageMap: Record<string, string> = {
+              tianding: '/tdsp.jpg',
+              qiangu: '/qgwh.jpg',
+              miaoyin: '/my.jpg',
+              xuan: '/x.jpg',
+              yangsheng: '/ys.jpg',
+            };
 
-          return (
-            <section
-              key={cat.id}
-              id={cat.id}
-              className={styles.categorySection}
-            >
-              <h2 className={styles.categoryTitle}>{cat.name}</h2>
-
-              <div className={styles.list}>
-                {items.map((item, index) => (
-                  <div key={index} className={styles.listItem}>
-                    {/* 標題 */}
-                    <div className={styles.titleRow}>
-                      {item.type === 'embed' ? (
-                        <span className={styles.itemTitle}>{item.title}</span>
-                      ) : (
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.itemTitle}
-                        >
-                          {item.title}
-                        </a>
-                      )}
-                    </div>
-
-                    {/* 來源（很淡）— 只在 type === 'link' 時顯示 */}
-                    {item.type === 'link' && item.author && (
-                      <div className={styles.author}>{item.author}</div>
-                    )}
-
-                    {/* 嵌入影片 */}
-                    {item.type === 'embed' && (
-                      <div
-                        className={styles.embedContainer}
-                        dangerouslySetInnerHTML={{ __html: item.embedCode }}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
-          );
-        })}
+            return (
+              <Link
+                key={cat.id}
+                href={`/jingxuan/${cat.id}`}
+                className={styles.categoryCard}
+              >
+                <div
+                  className={styles.categoryImage}
+                  style={{ backgroundImage: `url('${imageMap[cat.id]}')` }}
+                />
+                <div className={styles.categoryOverlay}>
+                  <h2 className={styles.categoryCardTitle}>{cat.name}</h2>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
