@@ -352,6 +352,13 @@ export const originalVideos: OriginalVideo[] = [
     videoSrcWebm: '/videos/720.webm',
     thumbnail: '/videos/720.webp',
   },
+  {
+    id: 2,
+    title: '善',
+    videoSrc: '/videos/shan.mp4',
+    videoSrcWebm: '/videos/shan.webm',
+    thumbnail: '/videos/shan.webp',
+  },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
 export type LabExperiment = {
