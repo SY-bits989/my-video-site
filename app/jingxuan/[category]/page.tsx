@@ -37,41 +37,44 @@ export default async function CategoryPage({
       <div className={styles.mainContent}>
         <h1 className={styles.categoryTitle}>{cat.name}</h1>
 
-        {items.length === 0 ? (
-          <p className={styles.empty}>此分類目前沒有內容</p>
-        ) : (
-          <div className={styles.list}>
-            {items.map((item, index) => (
-              <div key={index} className={styles.listItem}>
-                <div className={styles.titleRow}>
-                  {item.type === 'embed' ? (
-                    <span className={styles.itemTitle}>{item.title}</span>
-                  ) : (
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.itemTitle}
-                    >
-                      {item.title}
-                    </a>
+        <div className={styles.platinumCard}>
+          {items.length === 0 ? (
+            <p className={styles.empty}>此分類目前沒有內容</p>
+          ) : (
+            <div className={styles.list}>
+              {items.map((item, index) => (
+                <div key={index} className={styles.listItem}>
+                  <div className={styles.titleRow}>
+                    {item.type === 'embed' ? (
+                      <span className={styles.itemTitle}>{item.title}</span>
+                    ) : (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.itemTitle}
+                      >
+                        {item.title}
+                      </a>
+                    )}
+
+                    {/* 作者移到同一行右側 */}
+                    {item.type === 'link' && item.author && (
+                      <div className={styles.author}>{item.author}</div>
+                    )}
+                  </div>
+
+                  {item.type === 'embed' && (
+                    <div
+                      className={styles.embedContainer}
+                      dangerouslySetInnerHTML={{ __html: item.embedCode }}
+                    />
                   )}
                 </div>
-
-                {item.type === 'link' && item.author && (
-                  <div className={styles.author}>{item.author}</div>
-                )}
-
-                {item.type === 'embed' && (
-                  <div
-                    className={styles.embedContainer}
-                    dangerouslySetInnerHTML={{ __html: item.embedCode }}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

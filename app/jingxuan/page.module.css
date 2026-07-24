@@ -40,6 +40,28 @@
   padding: 0 1.5rem 4rem;
 }
 
+/* ==================== 白金卡片 ==================== */
+.platinumCard {
+  background:
+    linear-gradient(#f9f7f3, #f9f7f3) padding-box,
+    linear-gradient(145deg, #f5c36a 0%, #e0b34a 40%, #c9a227 100%) border-box;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.07),
+    0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+/* 空狀態 */
+.empty {
+  color: #f5c36a;
+  text-align: center;
+  padding: 2.2rem 0;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
 /* ==================== 分類區塊 ==================== */
 .categorySection {
   margin-bottom: 4rem;
@@ -54,45 +76,61 @@
   letter-spacing: 0.02em;
 }
 
-/* ==================== 列表 ==================== */
+/* ==================== 列表（卡片內） ==================== */
 .list {
   display: flex;
   flex-direction: column;
 }
 
-/* 每個項目：垂直掃描優先，間距完全一致 */
 .listItem {
-  padding: 1.25rem 0; /* 電腦版稍微放寬間距 */
-  /* 不加邊框、不加背景、不加陰影 */
+  padding: 1.2rem 0;
+  /* 已移除淺灰色分割線 */
 }
 
-/* 標題（所有標題字級、行高、間距完全一致） */
+.listItem:first-child {
+  padding-top: 0;
+}
+
+.listItem:last-child {
+  padding-bottom: 0;
+}
+
+/* 標題行：左標題 + 右作者 */
 .titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.25rem;
   margin: 0;
   padding: 0;
 }
 
 .itemTitle {
   display: block;
-  font-size: 1.4rem; /* 放大 */
+  flex: 1;
+  min-width: 0;
+  font-size: 1.32rem;
   font-weight: 600;
   line-height: 1.5;
-  color: #f8f1d8;
+  color: #1e293b; /* 夜空深藍 */
   text-decoration: none;
-  /* 不限制行數，完整顯示標題 */
+  transition: color 0.2s ease;
 }
 
 a.itemTitle:hover {
-  color: #f5c36a;
+  color: #a16207; /* 較深的琥珀金，對比足夠 */
 }
 
-/* 來源字小且很淡 */
+/* 作者（同一行右側） */
 .author {
-  margin-top: 0.35rem;
-  font-size: 0.95rem; /* 稍微放大但仍保持淡 */
-  color: #64748b;
-  line-height: 1.35;
+  flex-shrink: 0;
+  margin-top: 0.18rem;
+  font-size: 0.9rem;
+  color: #854d0e;
+  line-height: 1.4;
   font-weight: 400;
+  text-align: right;
+  max-width: 34%;
 }
 
 /* ==================== 嵌入影片（電腦版放大） ==================== */
@@ -124,6 +162,12 @@ a.itemTitle:hover {
     padding: 0 1rem 3.5rem;
   }
 
+  .platinumCard {
+    padding: 1.3rem 1.2rem;
+    border-radius: 12px;
+    border-width: 1.8px; /* 手機邊框稍微細一點比較精緻 */
+  }
+
   .categorySection {
     margin-bottom: 2.8rem;
   }
@@ -133,237 +177,39 @@ a.itemTitle:hover {
     margin-bottom: 1.15rem;
   }
 
-  /* 手機密度目標：一屏約 5–7 個標題 */
   .listItem {
-    padding: 0.92rem 0;
+    padding: 1.05rem 0;
+  }
+
+  .titleRow {
+    flex-direction: column; /* 改成上下排列 */
+    align-items: flex-start;
+    gap: 0.35rem; /* 標題與作者之間的間距 */
   }
 
   .itemTitle {
-    font-size: 1.08rem;
-    line-height: 1.42;
+    color: #1e293b;
+    font-size: 1.28rem; /* 手機版標題放大 */
+    line-height: 1.48;
+    width: 100%; /* 標題可以用完整寬度 */
   }
 
   .author {
-    margin-top: 0.22rem;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+    max-width: none; /* 拿掉 38% 限制 */
+    margin-top: 0;
+    color: #854d0e; /* 可選：讓作者顏色稍微淡一點，不搶標題 */
+    align-self: flex-start; /* 靠左對齊（如果你想靠右可以改 flex-end） */
   }
 
   .embedContainer {
-    margin-top: 0.75rem;
+    margin-top: 0.85rem;
     border-radius: 8px;
   }
 
   .embedContainer iframe {
     max-height: 280px;
   }
-}
-/* ==================== Accordion ==================== */
-.accordionItem {
-  margin-bottom: 0.75rem;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: #111827;
-  border: 1px solid rgba(245, 195, 106, 0.12);
-}
-
-.accordionHeader {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.1rem 1.4rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background-color 0.2s ease;
-  -webkit-tap-highlight-color: transparent; /* 去掉手機點擊藍框 */
-  touch-action: manipulation; /* 提升觸控反應 */
-}
-
-.accordionHeader:hover {
-  background-color: #1f2937;
-}
-
-.accordionHeaderOpen {
-  background-color: #1f2937;
-  border-bottom: 1px solid rgba(245, 195, 106, 0.15);
-}
-
-.accordionTitle {
-  color: #f5c36a;
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.accordionIcon {
-  color: #f5c36a;
-  font-size: 1.4rem;
-  font-weight: 300;
-  line-height: 1;
-  margin-left: 1rem;
-}
-
-.accordionContent {
-  padding: 0.5rem 1.4rem 1.4rem;
-}
-
-/* ==================== 手機版專用設計（重點） ==================== */
-@media (max-width: 640px) {
-  .accordionItem {
-    margin-bottom: 0.9rem;
-    border-radius: 12px;
-    border: 1px solid rgba(245, 195, 106, 0.18);
-    background-color: #0f172a;
-  }
-
-  /* 超大觸控區 + 大字 */
-  .accordionHeader {
-    padding: 1.35rem 1.25rem; /* 觸控高度約 52px+ */
-    min-height: 56px;
-  }
-
-  .accordionHeaderOpen {
-    background-color: #1e293b;
-    border-bottom: 1px solid rgba(245, 195, 106, 0.2);
-  }
-
-  .accordionTitle {
-    font-size: 1.32rem; /* 明顯加大 */
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    line-height: 1.35;
-  }
-
-  .accordionIcon {
-    font-size: 1.6rem;
-    opacity: 0.9;
-  }
-
-  /* 內容區更鬆，讓人看得舒服 */
-  .accordionContent {
-    padding: 0.6rem 1.25rem 1.5rem;
-  }
-
-  /* 手機列表項目也跟著放大、拉開間距 */
-  .listItem {
-    padding: 1.15rem 0 !important; /* 比原本更鬆 */
-  }
-
-  .itemTitle {
-    font-size: 1.18rem !important; /* 標題更大 */
-    line-height: 1.5 !important;
-    font-weight: 600;
-  }
-
-  .author {
-    margin-top: 0.3rem !important;
-    font-size: 0.85rem !important;
-    color: #94a3b8;
-  }
-
-  .embedContainer {
-    margin-top: 0.9rem !important;
-    border-radius: 10px;
-  }
-
-  .embedContainer iframe {
-    max-height: 240px !important;
-  }
-}
-/* ==================== 手機閱讀模式（Read Mode） ==================== */
-.mobileReadMode {
-  max-width: 100%;
-  padding: 0 1.1rem 4rem;
-}
-
-.mobileCategory {
-  margin-bottom: 3.2rem;
-}
-
-.mobileCategoryTitle {
-  color: #f5c36a;
-  font-size: 1.45rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  margin: 0 0 1.4rem 0;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(245, 195, 106, 0.25);
-}
-
-.mobileList {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.mobileItem {
-  padding: 1.25rem 0;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-}
-
-.mobileItem:last-child {
-  border-bottom: none;
-}
-
-.mobileTitle {
-  display: block;
-  font-size: 1.22rem;
-  font-weight: 600;
-  line-height: 1.55;
-  color: #f8f1d8;
-  text-decoration: none;
-}
-
-a.mobileTitle:hover,
-a.mobileTitle:active {
-  color: #f5c36a;
-}
-
-.mobileAuthor {
-  margin-top: 0.35rem;
-  font-size: 0.88rem;
-  color: #94a3b8;
-  line-height: 1.4;
-}
-
-.mobileEmbed {
-  margin-top: 1rem;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #000;
-}
-
-.mobileEmbed iframe {
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-  max-height: 240px;
-  display: block;
-  border: none;
-}
-
-/* ==================== 入口頁標題 ==================== */
-.pageTitle {
-  color: #f5c36a;
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin: 0 0 2rem 0;
-  letter-spacing: 0.03em;
-}
-
-/* ==================== 穹頂樂嵌入區 ==================== */
-.featuredEmbed {
-  margin-bottom: 3.5rem;
-}
-
-.featuredTitle {
-  color: #f5c36a;
-  font-size: 1.7rem;
-  font-weight: 600;
-  margin: 0 0 1.4rem 0;
-  letter-spacing: 0.02em;
 }
 
 /* ==================== 分類卡片（仿主頁 exploreCard） ==================== */
