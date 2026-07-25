@@ -136,6 +136,7 @@ a.itemTitle:hover {
 /* ==================== 嵌入影片（電腦版放大） ==================== */
 .embedContainer {
   margin-top: 1.1rem;
+  margin-bottom: 1.5rem;
   border-radius: 12px;
   overflow: hidden;
   background: #000;
