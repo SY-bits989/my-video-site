@@ -419,6 +419,13 @@ export const originalVideos: OriginalVideo[] = [
   },
   {
     id: 2,
+    title: '上善若水',
+    videoSrc: '/videos/ssrs.mp4',
+    videoSrcWebm: '/videos/ssrs.webm',
+    thumbnail: '/videos/ssrs.webp',
+  },
+  {
+    id: 3,
     title: '善',
     videoSrc: '/videos/shan.mp4',
     videoSrcWebm: '/videos/shan.webm',
