@@ -419,10 +419,10 @@ export const originalVideos: OriginalVideo[] = [
   },
   {
     id: 2,
-    title: '上善若水',
-    videoSrc: '/videos/ssrs.mp4',
-    videoSrcWebm: '/videos/ssrs.webm',
-    thumbnail: '/videos/ssrs.webp',
+    title: '上善',
+    videoSrc: '/videos/ss.mp4',
+    videoSrcWebm: '/videos/ss.webm',
+    thumbnail: '/videos/ss.webp',
   },
   {
     id: 3,
@@ -430,6 +430,13 @@ export const originalVideos: OriginalVideo[] = [
     videoSrc: '/videos/shan.mp4',
     videoSrcWebm: '/videos/shan.webm',
     thumbnail: '/videos/shan.webp',
+  },
+  {
+    id: 4,
+    title: '上善若水',
+    videoSrc: '/videos/ssrs.mp4',
+    videoSrcWebm: '/videos/ssrs.webm',
+    thumbnail: '/videos/ssrs.webp',
   },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
