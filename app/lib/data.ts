@@ -431,13 +431,6 @@ export const originalVideos: OriginalVideo[] = [
     videoSrcWebm: '/videos/shan.webm',
     thumbnail: '/videos/shan.webp',
   },
-  {
-    id: 4,
-    title: '上善若水',
-    videoSrc: '/videos/ssrs.mp4',
-    videoSrcWebm: '/videos/ssrs.webm',
-    thumbnail: '/videos/ssrs.webp',
-  },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
 export type LabExperiment = {
