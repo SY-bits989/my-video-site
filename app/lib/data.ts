@@ -343,6 +343,14 @@ export const videoData = {
     {
       type: 'link',
       title:
+        '#早餐 #減少疲勞 #營養補充 #補腦 #強腦 #護肝 早餐必吃 3 種粉強腦護肝 【健康1+1】',
+      url: 'https://www.ganjingworld.com/s/YpWA0kwzNz',
+      author: '「健康1+1」',
+      category: '',
+    },
+    {
+      type: 'link',
+      title:
         '吃素越久，反而越容易健忘？有些人不是老了，而是大腦缺了一種關鍵營養... #健康1+1 #JoJo #失智 #吃素',
       url: 'https://www.ganjingworld.com/s/GmjgzQ8rv4',
       author: '「健康1+1」',
