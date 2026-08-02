@@ -329,6 +329,14 @@ export const videoData = {
       author: '「玄乎神乎」',
       category: '',
     },
+    {
+      type: 'link',
+      title:
+        '一條公式, 揭開聲音療癒的最大秘密! 科學界為此尋找30年 - 【宇宙的聲音】-1',
+      url: 'https://www.ganjingworld.com/s/w6pe1veqmo',
+      author: '「玄乎神乎」',
+      category: '',
+    },
   ] as const satisfies LinkVideoItem[],
 
   others: [
