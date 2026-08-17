@@ -475,24 +475,10 @@ export type OriginalVideo = {
 export const originalVideos: OriginalVideo[] = [
   {
     id: 1,
-    title: '上善',
-    videoSrc: '/videos/ss.mp4',
-    videoSrcWebm: '/videos/ss.webm',
-    thumbnail: '/videos/ss.webp',
-  },
-  {
-    id: 2,
-    title: '歸',
-    videoSrc: '/videos/g.mp4',
-    videoSrcWebm: '/videos/g.webm',
-    thumbnail: '/videos/g.webp',
-  },
-  {
-    id: 3,
-    title: '善',
-    videoSrc: '/videos/shan.mp4',
-    videoSrcWebm: '/videos/shan.webm',
-    thumbnail: '/videos/shan.webp',
+    title: '',
+    videoSrc: '',
+    videoSrcWebm: '',
+    thumbnail: '',
   },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================
