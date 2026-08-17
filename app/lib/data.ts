@@ -475,27 +475,20 @@ export type OriginalVideo = {
 export const originalVideos: OriginalVideo[] = [
   {
     id: 1,
-    title: '7.20',
-    videoSrc: '/videos/720.mp4',
-    videoSrcWebm: '/videos/720.webm',
-    thumbnail: '/videos/720.webp',
-  },
-  {
-    id: 2,
     title: '上善',
     videoSrc: '/videos/ss.mp4',
     videoSrcWebm: '/videos/ss.webm',
     thumbnail: '/videos/ss.webp',
   },
   {
-    id: 3,
+    id: 2,
     title: '歸',
     videoSrc: '/videos/g.mp4',
     videoSrcWebm: '/videos/g.webm',
     thumbnail: '/videos/g.webp',
   },
   {
-    id: 4,
+    id: 3,
     title: '善',
     videoSrc: '/videos/shan.mp4',
     videoSrcWebm: '/videos/shan.webm',
