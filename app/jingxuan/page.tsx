@@ -19,7 +19,7 @@ export default function JingxuanPage() {
       <div className={styles.mainContent}>
         {/* ===== 穹頂樂影片（直接嵌入） ===== */}
         <section className={styles.featuredEmbed}>
-          <h2 className={styles.featuredTitle}>穹頂樂</h2>
+          <h2 className={styles.featuredTitle}>交響樂</h2>
           <div className={styles.embedContainer}>
             <iframe
               width="100%"
@@ -39,10 +39,8 @@ export default function JingxuanPage() {
             // 對應 public 資料夾的圖片
             const imageMap: Record<string, string> = {
               tianding: '/tdsp.jpg',
-              qiangu: '/qgwh.jpg',
-              miaoyin: '/my.jpg',
               xuan: '/x.jpg',
-              yangsheng: '/ys.jpg',
+              miaoyin: '/my.jpg',
             };
 
             return (

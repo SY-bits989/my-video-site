@@ -19,11 +19,9 @@ export type VideoItem = EmbedVideoItem | LinkVideoItem;
 
 // ==================== 精選分類（新增這裡） ====================
 export const jingxuanCategories = [
-  { id: 'tianding', name: '天頂視頻', key: 'top-video' as const },
-  { id: 'qiangu', name: '千古文化', key: 'culture' as const },
-  { id: 'miaoyin', name: '妙音', key: 'audio' as const },
+  { id: 'tianding', name: '宇宙視頻', key: 'top-video' as const },
   { id: 'xuan', name: '玄', key: 'xuan' as const },
-  { id: 'yangsheng', name: '養生', key: 'others' as const },
+  { id: 'miaoyin', name: '妙', key: 'audio' as const },
 ] as const;
 
 // ==================== Main Content Data ====================
@@ -39,37 +37,30 @@ export const videoData = {
   'top-video': [
     {
       type: 'link',
-      title: '神韻早期節目: 梁山伯與祝英台片段（2019年製作）',
-      url: 'https://www.shenyuncreations.com/s/t/1NOzB4',
+      title: '2023 神韻交響樂 《末後救度》',
+      url: 'https://www.shenyuncreations.com/s/t/1bROgq',
       author: '「神韻作品」',
       category: '',
     },
     {
       type: 'link',
-      title: '神韻早期節目: 餐館裡的笑聲（2019年製作）',
-      url: 'https://www.shenyuncreations.com/s/t/1SQrcN',
+      title: '2019 神韻交響樂《法正人間》',
+      url: 'https://www.shenyuncreations.com/s/t/19NnnG',
       author: '「神韻作品」',
       category: '',
     },
     {
       type: 'link',
-      title: '神韻早期節目: 天仙彩虹（2018年製作）',
-      url: 'https://www.shenyuncreations.com/s/t/1Z3VtB',
+      title: '2018 神韻交響樂《下世救眾生》',
+      url: 'https://www.shenyuncreations.com/s/t/1XebY0',
       author: '「神韻作品」',
       category: '',
     },
     {
       type: 'link',
-      title: '神韻早期節目:擒鰲拜（2016年製作)',
-      url: 'https://www.shenyuncreations.com/s/t/Dv8Vh',
+      title: '救世正法',
+      url: 'https://www.shenyuncreations.com/s/t/2eC5kg',
       author: '「神韻作品」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '',
-      url: '',
-      author: '',
       category: '',
     },
     {
@@ -122,345 +113,44 @@ export const videoData = {
       author: '「神韻作品」',
       category: '',
     },
-    {
-      type: 'link',
-      title: '',
-      url: '',
-      author: '',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '國際人權律師讚：神韻兼具藝術美感與人權內涵',
-      url: 'https://www.ganjingworld.com/s/mwWw9lXkk3',
-      author: '「加拿大新唐人中文新聞」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '國會議員褒獎 讚神韻重返多倫多是重要里程碑',
-      url: 'https://www.ganjingworld.com/s/7MRX3JKKRg',
-      author: '「加拿大新唐人中文新聞」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '國會議員讚神韻指路明燈 頒褒獎賀重返多倫多',
-      url: 'https://www.ganjingworld.com/s/8MKq4kw4qQ',
-      author: '「新唐人精選新聞」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '資深製片人讚神韻登峰造極 盼福澤中國大地',
-      url: 'https://www.ganjingworld.com/s/qlXz0Awa6A',
-      author: '「加拿大新唐人中文新聞」',
-      category: '',
-    },
   ] as const satisfies LinkVideoItem[],
 
-  culture: [
+  'audio': [
     {
       type: 'link',
-      title: '4月份三退逾120萬 比上月增3萬 歷史在等待你的名字(組圖)',
-      url: 'http://kzg.io/b54buT',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '神韻20週年壓軸戲即將上演 加政要賀重返多倫多(圖)',
-      url: 'http://kzg.io/b54cQc',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '神韻重返多倫多首演爆滿 觀眾：以行動反擊跨國鎮壓(圖)',
-      url: 'http://kzg.io/b54cSz',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '香港泰拳王終圓觀神韵心願 感歎邪不勝正(圖)',
-      url: 'http://kzg.io/b54cU3',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '願神韻恩澤天下 救華夏於危難(圖)',
-      url: 'http://kzg.io/b54cVf',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '洪水肆虐貴州廣西 山體滑坡奪命 街道變河房屋泡水(圖)',
-      url: 'http://kzg.io/b54cQU',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '中華千古英雄人物——李白冥壽1325週年(圖)',
-      url: 'http://kzg.io/b54cms',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '美國250週年：為何說信仰才是美國真正的立國根基？(圖)',
-      url: 'http://kzg.io/b54cU4',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '',
-      url: '',
-      author: '',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '這樣做 讓你的孩子愛上閱讀(圖)',
-      url: 'http://kzg.io/b54cB8',
-      author: '「看中國」',
+      title:
+        '清風幽蘭',
+      url: 'https://www.joankingmusic.com/blog/music000206',
+      author: '「淨泉音樂原創」',
       category: '',
     },
     {
       type: 'link',
       title:
-        '穿在身上的帝王密碼 揭開「十二章紋」的神秘面紗(圖) 天子的衣服上究竟都有啥',
-      url: 'http://kzg.io/b54cVq',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '🎈中國傳統文化裡的漢字「胖」，原來藏著古人最高級的審美智慧⭐️⭐️⭐️⭐️⭐️',
-      url: 'https://www.ganjingworld.com/s/JmR7kkWwyR',
-      author: '「凈泉音樂原創 JQ Music」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '擔心三高少吃肉真的對嗎？小心肌少症！(圖)',
-      url: 'http://kzg.io/b54cYd',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '如何扭轉命運？人生覺醒靠10種高維能力(圖)',
-      url: 'http://kzg.io/b54cYX',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '巴菲特：人生其實只需要做好6件事(圖)',
-      url: 'http://kzg.io/b54ccX',
-      author: '「看中國」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '富貴之人擁有哪些面相特徵？(圖)',
-      url: 'http://kzg.io/b54cl5',
-      author: '「看中國」',
+        '正念如獅',
+      url: 'https://www.joankingmusic.com/blog/music000447',
+      author: '「淨泉音樂原創」',
       category: '',
     },
   ] as const satisfies LinkVideoItem[],
 
-  audio: [
+  'xuan': [
     {
       type: 'link',
-      title: '大法是歸度',
-      url: 'https://www.joankingmusic.com/blog/music000442',
-      author: '「凈泉音樂原創 JQ Music」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '萬王之王',
-      url: 'https://www.joankingmusic.com/blog/music000349',
-      author: '「凈泉音樂原創 JQ Music」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '雨中燈',
-      url: 'https://www.joankingmusic.com/blog/music000394',
-      author: '「凈泉音樂原創 JQ Music」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '彼岸',
-      url: 'https://www.joankingmusic.com/blog/music000446',
-      author: '「凈泉音樂原創 JQ Music」',
-      category: '',
-    },
-  ] as const satisfies LinkVideoItem[],
-
-  xuan: [
-    {
-      type: 'link',
-      title: '150歲延壽工程還在進行;遠古國王真的活了幾千歲? 蘇美爾王表之謎',
-      url: 'https://www.ganjingworld.com/s/6gAVMWwo4y',
+      title: '跨越5000年的驚人對話! 聲音真的能改變現實? 你的耳朵如何真正聽懂【宇宙的聲音】- 2',
+      url: 'https://youtu.be/MdrWYA8ogw0',
       author: '「玄乎神乎」',
       category: '',
     },
     {
       type: 'link',
-      title: '驚人揭秘: 一場精心設計的陷阱! 《外星人訪談錄》(上)',
-      url: 'https://www.ganjingworld.com/s/Qp0OKENM49',
-      author: '「玄乎神乎」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '外星人警告: 死亡後不要做這件事! UFO墜毀真相...《外星人訪談錄》下',
-      url: 'https://www.ganjingworld.com/s/3RNWAEGJ1M',
-      author: '「玄乎神乎」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '一條公式, 揭開聲音療癒的最大秘密! 科學界為此尋找30年 - 【宇宙的聲音】-1',
-      url: 'https://www.ganjingworld.com/s/w6pe1veqmo',
+      title: '一條公式, 揭開聲音療癒的最大秘密! 科學界為此尋找了30年 - 【宇宙的聲音】-1',
+      url: 'https://youtu.be/csFesKS9Lk0',
       author: '「玄乎神乎」',
       category: '',
     },
   ] as const satisfies LinkVideoItem[],
 
-  others: [
-    {
-      type: 'link',
-      title:
-        '#堅果 #護腦 #補腦 #神經穩定 #抗氧化 #營養補充 護腦 3 大堅果【健康1+1】',
-      url: 'https://www.ganjingworld.com/s/BMrxAbrJp8',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '#助眠 #失眠 #作息 #藍光 #褪黑激素 #入睡 最傷身的 3 大睡前習慣【健康1+1】',
-      url: 'https://www.ganjingworld.com/s/o7G7VxnJKM',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '#早餐 #減少疲勞 #營養補充 #補腦 #強腦 #護肝 早餐必吃 3 種粉強腦護肝 【健康1+1】',
-      url: 'https://www.ganjingworld.com/s/YpWA0kwzNz',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '#大腸息肉 #大腸癌 #腸道負擔 #消化 #腸胃吸收 #補充水份 大腸息肉 3 類食物少碰【健康1+1】',
-      url: 'https://www.ganjingworld.com/s/z3Elvn3oGZ',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '吃素越久，反而越容易健忘？有些人不是老了，而是大腦缺了一種關鍵營養... #健康1+1 #JoJo #失智 #吃素',
-      url: 'https://www.ganjingworld.com/s/GmjgzQ8rv4',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '按這裡！天然美白+消眼袋 如果最近：✔︎顏色暗沉 ✔︎看起來蠟黃 ✔︎眼袋越來越明顯 試試按摩 四白穴 幫助循環，讓氣色看起來更有精神。有時你需要的，不是更多保養品。而是循環變好。 #健康1+1 #JoJo #四白穴 #美白',
-      url: 'https://www.ganjingworld.com/s/NpMq0XYv2l',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '',
-      url: '',
-      author: '',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '⚠️低鈉鹽，不一定適合每個人！但你知道嗎？🧂低鈉鹽不是沒有鹽，而是用鉀取代部分鈉，因此鉀含量通常更高。如果是腎臟功能不好的人，鉀排不出去，反而可能造成高血鉀，嚴重時甚至可能影響心臟 #健康1+1 #JoJo',
-      url: 'https://www.ganjingworld.com/s/e00lv0w9a8',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '胃酸沒了，第一道防線也沒了！別只想著把胃酸消掉！胃酸能幫助殺死食物中的細菌，長期讓胃酸過低，可能讓更多的細菌一路進入腸道，影響菌相平衡。你的胃酸，比你想像中更重要！ #健康1+1 #JoJo #胃酸 #胃食道逆流',
-      url: 'https://www.ganjingworld.com/s/12pgmDr8Mv',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title: '',
-      url: '',
-      author: '',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '大便常常是深色！腸道可能出事？有些人長期大便顏色偏深，通常和飲食習慣有關。像是煎、炸、炒這類高溫料理，容易讓食物產生較多負擔性的代謝物，長期下來，可能讓腸道環境比較不理想。 #健康1+1 #JoJo #腸道 #大便',
-      url: 'https://www.ganjingworld.com/s/kgx0Ba8ZRo',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '喜歡吃大蒜 竟然會導致脹氣？ 你以為肚子脹，只是吃太多？其實可能是食物在「製造氣體」！😳很多人愛吃的蔥、大蒜、洋蔥，雖然是料理靈魂，但它們同時也是高產氣食物。有些人吃完容易腹脹、放屁變多、腸胃不舒服，卻一直以為只是「吃太飽」。',
-      url: 'https://www.ganjingworld.com/s/AMK4rzKpwa',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '整天吃不停！小心養出糖尿病？很多現代人一整天嘴巴停不下來：三餐之外，還有水果、餅乾、零食...... 看似吃得不多，但身體可能一直處在處理血糖的狀態。當血糖調節系統長時間不停工作，身體對血糖的控制能力可能慢慢下降。 #健康1+1 #JoJo',
-      url: 'https://www.ganjingworld.com/s/Op1kkXpmmv',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '怕紅肉傷身？60歲她後悔太晚吃！很多人害怕紅肉，擔心膽固醇、癌症，乾脆完全不碰。但一位60歲女性，長期不吃紅肉，竟出現頭暈、心悸、疲倦、沒體力，甚至臉色蒼白。醫師追問後發現：問題不是老化，而是缺少紅肉中的關鍵營養————鐵！ #健康1+1',
-      url: 'https://www.ganjingworld.com/s/apZkbyRVWj',
-      author: '「健康1+1」',
-      category: '',
-    },
-    {
-      type: 'link',
-      title:
-        '⚠️腸道顧不好，身體可能處處發出警報！想養好腸道，先從餐桌開始！日本醫師提出「腸道健康」的重要性，認為維持良好的腸道環境，是守護全身健康的關鍵之一。那日常可以吃什麼？這些食物富含不同營養素，有助於打造更健康的飲食結構 #健康1+1 #JoJo ',
-      url: 'https://www.ganjingworld.com/s/w668Nj1vZx',
-      author: '「健康1+1」',
-      category: '',
-    },
-  ] as const satisfies LinkVideoItem[],
-
-  original: [] as const satisfies VideoItem[],
 } as const;
 
 // ==================== 原創視頻（保持不動） ====================
@@ -475,10 +165,17 @@ export type OriginalVideo = {
 export const originalVideos: OriginalVideo[] = [
   {
     id: 1,
-    title: '',
-    videoSrc: '',
-    videoSrcWebm: '',
-    thumbnail: '',
+    title: '返本歸真',
+    videoSrc: '/videos/fbgz.mp4',
+    videoSrcWebm: '/videos/fbgz.webm',
+    thumbnail: '/videos/fbgz.webp',
+  },
+  {
+    id: 2,
+    title: '上善若水',
+    videoSrc: '/videos/ss.mp4',
+    videoSrcWebm: '/videos/ss.webm',
+    thumbnail: '/videos/ss.webp',
   },
 ];
 // ==================== 創作實驗（Lab Experiments） ====================

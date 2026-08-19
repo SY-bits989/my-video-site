@@ -8,9 +8,23 @@ export default function HomePage() {
       {/* ==================== Hero ==================== */}
       <section className={styles.hero}>
         <div className={styles.heroImage}>
+          {/* 改成影片 */}
+          <video
+            className={styles.heroVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+            {/* 如果有 webm 也可以加這行 */}
+            {/* <source src="/hero-video.webm" type="video/webm" /> */}
+          </video>
+
           <div className={styles.heroOverlay} />
           <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>善圓&美慧</h1>
+            <h1 className={styles.heroTitle}></h1>
           </div>
         </div>
       </section>
@@ -25,7 +39,7 @@ export default function HomePage() {
               style={{ backgroundImage: `url('/original-preview.jpg')` }}
             />
             <div className={styles.exploreOverlay}>
-              <h2 className={styles.exploreTitle}>視頻</h2>
+              <h2 className={styles.exploreTitle}>返本歸真</h2>
             </div>
           </Link>
 
@@ -36,7 +50,7 @@ export default function HomePage() {
               style={{ backgroundImage: `url('/jingxuan-preview.jpg')` }}
             />
             <div className={styles.exploreOverlay}>
-              <h2 className={styles.exploreTitle}>推薦</h2>
+              <h2 className={styles.exploreTitle}>曠古稀世</h2>
             </div>
           </Link>
         </div>
