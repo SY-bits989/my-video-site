@@ -146,3 +146,50 @@
   margin: 0;
   letter-spacing: 0.05em;
 }
+
+/* ==================== 手機版 ==================== */
+@media (max-width: 768px) {
+
+  /* Hero 區域置中 */
+  .heroContent {
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    text-align: center;
+    /* 標題文字也置中 */
+  }
+
+  .heroTitle {
+    font-size: 3.2rem;
+    /* 手機上字體稍微縮小一點比較好看 */
+    letter-spacing: 0.08em;
+  }
+
+  /* 下面兩個大按鈕整體置中 */
+  .exploreSection {
+    display: flex;
+    justify-content: center;
+  }
+
+  .exploreGrid {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* 手機上建議改成上下排列 */
+    align-items: center;
+    /* 水平置中 */
+    gap: 16px;
+    /* 兩個按鈕之間的間距，可自行調整 */
+  }
+
+  .exploreCard {
+    width: 92%;
+    /* 不要貼邊，留一點邊距 */
+    max-width: 420px;
+  }
+
+  .exploreTitle {
+    font-size: 1.6rem;
+  }
+}
